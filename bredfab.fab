@@ -1,13 +1,18 @@
 Bred {
-  main [spaces1 firstPattern spaces2 secondPattern spaces3] =
-    ‛«spaces1»«firstPattern»«spaces2»«secondPattern»«spaces3»’
+  main [spaces1 firstPattern spaces2 secondPattern spaces3] = ‛
+Run {
+  «spaces1»«firstPattern»«spaces2»«secondPattern»«spaces3»
+}
+’
 
   firstPattern [lq firstitem+ rq] = ‛Pattern [«firstitem»] = ’
   firstitem_variable [lq name rq] = ‛ «name» ’
-  firstitem_character [c] = ‛’
+  firstitem_space [c] = ‛’
+  firstitem_characters [c+] = ‛ «gensym ("ignore")» ’
   secondPattern [lq seconditem+ rq] = ‛«lq»«seconditem»«rq»’
   seconditem_variable [lq name rq] = ‛«lq»«name»«rq»’
-  seconditem_character [c] = ‛«c»’
+  seconditem_space [s] = ‛’
+  seconditem_characters [c+] = ‛«c»’
 
   name [nameFirst nameRest*] = ‛«nameFirst»«nameRest»’
   nameFirst [letter] = ‛«letter»’

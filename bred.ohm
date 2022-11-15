@@ -4,11 +4,13 @@ Bred {
   firstPattern = "‛" firstitem+ "’"
   firstitem =
     | "«" name "»" -- variable
-    | ~"«" ~"»" ~"‛" ~"’" any -- character
+    | space -- space
+    | (~"«" ~"»" ~"‛" ~"’" ~space any)+ -- characters
   secondPattern = "‛" seconditem+ "’"
   seconditem =
     | "«" name "»" -- variable
-    | ~"«" ~"»" ~"‛" ~"’" any -- character
+    | space -- space
+    | (~"«" ~"»" ~"‛" ~"’" ~space any)+ -- characters
 
   name = nameFirst nameRest*
   nameFirst = letter
