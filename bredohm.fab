@@ -6,7 +6,25 @@ Run {
 ’
 
 
-  firstPattern [lq firstitem+ rq] = ‛Pattern = «firstitem»’
+  firstPattern [lq firstitem+ rq] = ‛
+  top = main+
+  main = spaces matchLR spaces
+
+  bracket =
+    | "(" | ")" | "{" | "}" | "[" | "]" | "<" | ">"
+    |  "❲" |  "❳" |  "«" | "»" | "⟨" |  "⟩" | "⟪" | "⟫"
+
+   char =  ~space ~bracket any
+
+   matchLR =
+     | space+ -- atLeastOneSpace
+     | patternLR -- pattern
+     | bracket -- brackets
+     | char+ -- char
+
+patternLR = «firstitem»
+’
+
   firstitem_variable [lq name rq] = ‛ item ’
   firstitem_space [c] = ‛’
   firstitem_characters [c+] = ‛ "«c»" ’
