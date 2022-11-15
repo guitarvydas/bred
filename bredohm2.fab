@@ -1,0 +1,23 @@
+Bred {
+  main [spaces1 firstPattern spaces2 secondPattern spaces3] = ‛«firstPattern»’
+
+
+  firstPattern [lq firstitem+ rq] = ‛
+literal = «firstitem»
+}
+’
+
+  firstitem_variable [lq name rq] = ‛ | item ’
+  firstitem_space [c] = ‛’
+  firstitem_characters [c+] = ‛ | "«c»" ’
+  secondPattern [lq seconditem+ rq] = ‛’
+  seconditem_variable [lq name rq] = ‛’
+  seconditem_space [c] = ‛’
+  seconditem_characters [c+] = ‛’
+
+  name [nameFirst nameRest*] = ‛«nameFirst»«nameRest»’
+  nameFirst [letter] = ‛«letter»’
+  nameRest [alnum] = ‛«alnum»’
+}
+
+

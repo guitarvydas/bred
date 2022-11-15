@@ -5,7 +5,7 @@ Run {
 }
 ’
 
-  firstPattern [lq firstitem+ rq] = ‛Pattern [«firstitem»] = ’
+  firstPattern [lq firstitem+ rq] = ‛patternLR [«firstitem»] = ’
   firstitem_variable [lq name rq] = ‛ «name» ’
   firstitem_space [c] = ‛’
   firstitem_characters [c+] = ‛ «gensym ("ignore")» ’
