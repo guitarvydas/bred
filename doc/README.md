@@ -20,5 +20,4 @@ is converted into
 
 `⟨MessageWithDebug ⟨MessageWithDebug p val x y⟩ v w⟩`
 
-See doc/README.md for more detail.
-
+[[pattern format]]

@@ -1,9 +1,13 @@
-all: firstToSecond
+all: firstToSecondDev
+
+firstToSecondDev:
+	./fab/fab - Bred bred.ohm bredohm.fab <test.txt
+	./fab/fab - Bred bred.ohm bredfab.fab --support=support.js <test.txt
 
 firstToSecond:
 	./fab/fab - Bred bred.ohm bredohm.fab <test.txt >pattern.ohm
 	./fab/fab - Bred bred.ohm bredfab.fab --support=support.js <test.txt >pattern.fab
-	# ./fab/fab - Run pattern.ohm pattern.fab <container.0d
+	./fab/fab - Run pattern.ohm pattern.fab <container.0d
 
 bothways:
 	./fab/fab - Bred bred.ohm bredohm.fab <test.txt
