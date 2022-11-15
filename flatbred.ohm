@@ -1,0 +1,14 @@
+Bred {
+  main = spaces firstPattern spaces secondPattern spaces
+
+  firstPattern = pattern
+  secondPattern = pattern
+  pattern = "‛" item+ "’"
+  item =
+    | "«" name "»" -- variable
+    | ~"«" ~"»" ~"‛" ~"’" any -- character
+
+  name = nameFirst nameRest*
+  nameFirst = letter
+  nameRest = alnum
+}
