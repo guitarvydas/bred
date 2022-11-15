@@ -2,9 +2,9 @@ Bred {
   main [spaces1 firstPattern spaces2 secondPattern spaces3] =
     ‛«spaces1»«firstPattern»«spaces2»«secondPattern»«spaces3»’
 
-  firstPattern [lq firstitem+ rq] = ‛«lq»«firstitem»«rq»’
-  firstitem_variable [lq name rq] = ‛«lq»«name»«rq»’
-  firstitem_character [c] = ‛«c»’
+  firstPattern [lq firstitem+ rq] = ‛Pattern [«firstitem»] = ’
+  firstitem_variable [lq name rq] = ‛ «name» ’
+  firstitem_character [c] = ‛’
   secondPattern [lq seconditem+ rq] = ‛«lq»«seconditem»«rq»’
   seconditem_variable [lq name rq] = ‛«lq»«name»«rq»’
   seconditem_character [c] = ‛«c»’
