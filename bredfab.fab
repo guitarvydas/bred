@@ -2,6 +2,17 @@ Bred {
   main [spaces1 firstPattern spaces2 secondPattern spaces3] = ‛
 Run {
   top [main+] = \‛\«main\»\’
+  main [spaces1 patternLR spaces2] = \‛\«spaces1\»\«patternLR\»\«spaces2\»\’
+  bracket [c] = \‛\«c\»\’
+  char [c] = \‛\«c\»\’
+
+  matchLR_atLeastOneSpace [sp+] = \‛\«sp\»\’
+  matchLR_pattern [lr] = \‛\«lr\»\’
+  matchLR_char [char+] = \‛\«char\»\’
+
+  item [spaces matchLR ] = \‛\«spaces\»\«matchLR\»\’
+  literal [c] =  \‛\«c\»\’
+  
   «spaces1»«firstPattern»«spaces2»«secondPattern»«spaces3»
 }
 ’
