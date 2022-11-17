@@ -10,10 +10,6 @@ Run {
   main = spaces matchLR spaces
   char =  ~space ~literal any
 
-  bracket =
-    | "(" | ")" | "{" | "}" | "[" | "]" | "<" | ">"
-    |  "❲" |  "❳" |  "«" | "»" | "⟨" |  "⟩" | "⟪" | "⟫"
-
    matchLR =
      | space+ -- atLeastOneSpace
      | patternLR -- pattern

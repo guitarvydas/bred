@@ -3,7 +3,6 @@ Bred {
 Run {
   top [main+] = \‛\«main\»\’
   main [spaces1 patternLR spaces2] = \‛\«spaces1\»\«patternLR\»\«spaces2\»\’
-  bracket [c] = \‛\«c\»\’
   char [c] = \‛\«c\»\’
 
   matchLR_atLeastOneSpace [sp+] = \‛\«sp\»\’

@@ -22,3 +22,9 @@ is converted into
 
 See doc/README.md for more detail.
 
+
+notes to self
+  bracket =
+    | "(" | ")" | "{" | "}" | "[" | "]" | "<" | ">"
+    |  "❲" |  "❳" |  "«" | "»" | "⟨" |  "⟩" | "⟪" | "⟫"
+
