@@ -15,7 +15,7 @@ Run {
      | patternLR -- pattern
      | char+ -- char
 
-   item = spaces matchLR
+   item = spaces matchLR spaces
 patternLR = «firstitem»
 
 ’

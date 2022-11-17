@@ -9,7 +9,7 @@ Run {
   matchLR_pattern [lr] = \‛\«lr\»\’
   matchLR_char [char+] = \‛\«char\»\’
 
-  item [spaces matchLR ] = \‛\«spaces\»\«matchLR\»\’
+  item [spaces1 matchLR spaces2] = \‛\«spaces1\»\«matchLR\»\«spaces2\»\’
   literal [c] =  \‛\«c\»\’
   
   «spaces1»«firstPattern»«spaces2»«secondPattern»«spaces3»
