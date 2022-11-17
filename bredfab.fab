@@ -22,7 +22,7 @@ Run {
   firstitem_space [c] = ‛’
   firstitem_characters [c+] = ‛ «gensym ("ignore")» ’
   secondPattern [lq seconditem+ rq] = ‛«lq»«seconditem»«rq»’
-  seconditem_variable [lq name rq] = ‛«lq»«name»«rq»’
+  seconditem_variable [lq name rq] = ‛ \««name»\»’
   seconditem_space [s] = ‛’
   seconditem_characters [c+] = ‛«c»’
 
