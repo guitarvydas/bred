@@ -1,0 +1,27 @@
+
+Run {
+
+  top = main+
+  main = spaces matchLR spaces
+  char =  ~space ~literal any
+
+  bracket =
+    | "(" | ")" | "{" | "}" | "[" | "]" | "<" | ">"
+    |  "❲" |  "❳" |  " | " | "⟨" |  "⟩" | "⟪" | "⟫"
+
+   matchLR =
+     | space+ -- atLeastOneSpace
+     | patternLR -- pattern
+     | char+ -- char
+
+   item = spaces matchLR
+patternLR =  "⟪"  item  item  item  item  "⟫" 
+
+
+
+
+
+
+literal =  | "⟪"  | item  | item  | item  | item  | "⟫" 
+}
+
