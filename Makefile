@@ -1,6 +1,6 @@
 #all: temp
 
-all: fab/fab firstToSecondDev
+all: fab/fab firstToSecond
 
 firstToSecondDev:
 	clear
@@ -13,15 +13,11 @@ firstToSecondDev:
 
 
 firstToSecond:
-	./fab/fab - Bred bred.ohm bredohm.fab <test.txt >pattern.ohm
-	./fab/fab - Bred bred.ohm bredfab.fab --support=support.js <test.txt >pattern.fab
+	clear
+	./fab/fab - Bred bred.ohm bredohm1.fab <test.txt >pattern.ohm
+	./fab/fab - Bred bred.ohm bredohm2.fab <test.txt >>pattern.ohm
+	./fab/fab - Bred bred.ohm bredfab.fab --support=support.js <test.txt > pattern.fab
 	./fab/fab - Run pattern.ohm pattern.fab <container.0d
-
-bothways:
-	./fab/fab - Bred bred.ohm bredohm.fab <test.txt
-	./fab/fab - Bred bred.ohm bredfab.fab --support=support.js <test.txt
-	./fab/fab - Bred bred.ohm bredohm.fab <test2.txt
-	./fab/fab - Bred bred.ohm bredfab.fab --support=support.js <test2.txt
 
 install: repos npmstuff
 
