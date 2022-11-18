@@ -1,0 +1,22 @@
+
+Run {
+
+  top = main+
+  main = spaces matchLR spaces
+  char =  ~space ~literal any
+
+   matchLR =
+     | space+ -- atLeastOneSpace
+     | patternLR -- pattern
+     | char+ -- char
+
+   item = spaces matchLR spaces
+patternLR =  "⎨"  item  item  item  "⎬" 
+
+
+
+
+
+literal =  | "⎨"  | item  | item  | item  | "⎬" 
+}
+
