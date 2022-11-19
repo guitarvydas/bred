@@ -18,7 +18,7 @@ Run {
     | "[" matchLR* "]" -- squarebracket
     | "<" matchLR* ">" -- anglebracket
     | "❲" matchLR* "❳" -- namebracket
-    | "«" matchLR* "»" -- varbracket
+    | "\«" matchLR* "\»" -- varbracket
     | "⟨" matchLR* "⟩" -- dtypebracket
     | "⟪" matchLR* "⟫" -- messagebracket
     | char+ -- char

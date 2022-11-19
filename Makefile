@@ -2,12 +2,9 @@
 
 all: fab/fab firstToSecond
 
-dev:
-	./dev.bash connection.bred connection.u0d
-	cat pattern.ohm
-
 firstToSecond:
 	./bred.bash message.bred container.0d >container.0d.out
+	./bred.bash connection.bred connection.u0d >connection.0d
 
 install: repos npmstuff
 
