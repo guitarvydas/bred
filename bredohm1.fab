@@ -21,12 +21,17 @@ Run {
     | "\«" matchLR* "\»" -- varbracket
     | "⟨" matchLR* "⟩" -- dtypebracket
     | "⟪" matchLR* "⟫" -- messagebracket
+    | "⎨" matchLR* "⎬" -- connectionbracket
+    | "⎡" matchLR* "⎤" -- sender
+    | "⎣" matchLR* "⎦" -- receiver
     | char+ -- char
+
 
   bracket =
     | "(" | ")" | "{" | "}" | "[" | "]" | "<" | ">"
     |  "❲" |  "❳" |  "«" | "»" | "⟨" |  "⟩" | "⟪" | "⟫"
-    | "⎨" | "⎬"
+    | "⎨" | "⎬" | "⎡"| "⎤" | "⎣"| "⎦"
+    | "⇉" | "↑" | "↓"
 
   item = spaces matchLR spaces
 
