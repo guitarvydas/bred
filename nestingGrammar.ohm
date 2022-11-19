@@ -1,55 +1,45 @@
 NestingGrammar {
 
-// test: ⎨▫down [š ✕in] ⇉ [❲leaf 1❳ ✕in]⎬
+// test: a b c ( d e f )
 // goal: 
 //   ⎨in ⇓ ❲leaf 1❳ in⎬
 //   ⎨in ⇑ ❲leaf 1❳ in⎬
 //   ⎨❲leaf 1❳ in ⇒ ❲leaf 2❳ in⎬
 //   ⎨in ⤻ out⎬
 
-  topLevel =
-    | (space | anyOtherChar)+  -- x
-    | bracketedItem topLevel?  -- y
+  topLevel = 
+    | runOfNonBrackets bracketed topLevel -- nbb
+    | bracketed                            -- b
+    | runOfNonBrackets                     -- nb
+    |                                      -- empty
+
+  runOfNonBrackets = (~bracket any)+
+  
+  bracketed = 
+    | "(" spaces itemsWithSpaces ")" spaces -- ii1a
+    | "(" spaces ")" spaces -- ii1b
+    | "(" ")" spaces -- ii1c
+
+  itemsWithSpaces = itemWithSpaces+
+  itemWithSpaces = item spaces
+
+  item =
+    | bracketed
+    | runOfUninterestingChars
+
+  runOfUninterestingChars = uninterestingChar+
+  uninterestingChar = ~space ~bracket ~connector any
 
   innerItem =
-    | patternLR                        -- a
-    | innerItem+ connector innerItem+  -- b
-    | bracketedItem                    -- c
-    | space+                           -- d
-    | anyOtherChar+                    -- e
-
-  beginBracket =
-    | "(" | "{" | "[" | "<"
-    |  "❲" |  "«" | "⟨" | "⟪"
-    | "⎨" | "⎡" | "⎣"
+    | bracketed
+    | runOfUninterestingChars
+    
+  innerItems = spaces (innerItem spaces)*
 
   bracket =
-    | "(" | ")" | "{" | "}" | "[" | "]" | "<" | ">"
-    |  "❲" |  "❳" |  "«" | "»" | "⟨" |  "⟩" | "⟪" | "⟫"
-    | "⎨" | "⎬" | "⎡"| "⎤" | "⎣" | "⎦"
+    | "(" | ")"
 
   connector =
     | "⇉" | "⇓" | "⇑" | "⇒" | "⤻"
-
-  anyOtherChar = ~connector ~bracket ~space any
-
-  bracketedItem =
-    | "(" innerItems ")" -- ii1
-    | "{" innerItems "}" -- ii2
-    | "[" innerItems "]" -- ii3
-    | "<" innerItems ">" -- ii4
-    | "❲" innerItems "❳" -- ii5
-    | "«" innerItems "»" -- ii6
-    | "⟨" innerItems "⟩" -- ii7
-    | "⟪" innerItems "⟫" -- ii8
-    | "⎨" innerItems "⎬" -- ii9
-    | "⎡" innerItems "⎤" -- ii10
-    | "⎣" innerItems "⎦" -- ii11
-  innerItems = innerItem+
-
-patternLR1 =  "[" innerItems "]"  "⇉"  "["  innerItems "]" 
-patternLR2  = "⎨" spaces innerItem spaces "⇓" spaces innerItem spaces innerItem spaces "⎬"
-patternLR3  = "⎨" spaces innerItem spaces "⇑" spaces innerItem spaces innerItem spaces "⎬"
-patternLR  = "⎨" spaces innerItem spaces innerItem spaces "⇒" spaces innerItem spaces innerItem spaces "⎬"
 
 }
