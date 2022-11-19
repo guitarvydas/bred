@@ -1,11 +1,15 @@
 NestingGrammar {
 
 // test: ⎨▫down [š ✕in] ⇉ [❲leaf 1❳ ✕in]⎬
+// goal: 
+//   ⎨in ⇓ ❲leaf 1❳ in⎬
+//   ⎨in ⇑ ❲leaf 1❳ in⎬
+//   ⎨❲leaf 1❳ in ⇒ ❲leaf 2❳ in⎬
+//   ⎨in ⤻ out⎬
 
-  topLevelBracketedItem =
-    | &beginBracket innerItem          -- x
-    | space+                           -- y
-    | anyOtherChar+                    -- z
+  topLevel =
+    | (space | anyOtherChar)+  -- x
+    | bracketedItem topLevel?  -- y
 
   innerItem =
     | patternLR                        -- a
@@ -25,24 +29,27 @@ NestingGrammar {
     | "⎨" | "⎬" | "⎡"| "⎤" | "⎣" | "⎦"
 
   connector =
-    | "⇉"
+    | "⇉" | "⇓" | "⇑" | "⇒" | "⤻"
 
-  anyOtherChar = (~connector ~bracket any)
+  anyOtherChar = ~connector ~bracket ~space any
 
   bracketedItem =
-    | "(" innerItems ")"
-    | "{" innerItems "}"
-    | "[" innerItems "]"
-    | "<" innerItems ">"
-    | "❲" innerItems "❳"
-    | "«" innerItems "»" 
-    | "⟨" innerItems "⟩" 
-    | "⟪" innerItems "⟫"
-    | "⎨" innerItems "⎬" 
-    | "⎡" innerItems "⎤" 
-    | "⎣" innerItems "⎦"
+    | "(" innerItems ")" -- ii1
+    | "{" innerItems "}" -- ii2
+    | "[" innerItems "]" -- ii3
+    | "<" innerItems ">" -- ii4
+    | "❲" innerItems "❳" -- ii5
+    | "«" innerItems "»" -- ii6
+    | "⟨" innerItems "⟩" -- ii7
+    | "⟪" innerItems "⟫" -- ii8
+    | "⎨" innerItems "⎬" -- ii9
+    | "⎡" innerItems "⎤" -- ii10
+    | "⎣" innerItems "⎦" -- ii11
   innerItems = innerItem+
 
-patternLR =  "[" innerItems "]"  "⇉"  "["  innerItems "]" 
+patternLR1 =  "[" innerItems "]"  "⇉"  "["  innerItems "]" 
+patternLR2  = "⎨" spaces innerItem spaces "⇓" spaces innerItem spaces innerItem spaces "⎬"
+patternLR3  = "⎨" spaces innerItem spaces "⇑" spaces innerItem spaces innerItem spaces "⎬"
+patternLR  = "⎨" spaces innerItem spaces innerItem spaces "⇒" spaces innerItem spaces innerItem spaces "⎬"
 
 }
