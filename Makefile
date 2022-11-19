@@ -4,6 +4,7 @@ all: fab/fab firstToSecond
 
 firstToSecond:
 	./bred.bash message.bred container.0d >container.0d.out
+	./bred.bash connection.bred connection.u0d >connection.0d
 
 install: repos npmstuff
 
