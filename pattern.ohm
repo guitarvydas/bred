@@ -21,6 +21,7 @@ Run {
   bracket =
     | "(" | ")" | "{" | "}" | "[" | "]" | "<" | ">"
     |  "❲" |  "❳" |  " | " | "⟨" |  "⟩" | "⟪" | "⟫"
+    | "⎨" | "⎬"
 
   item = spaces matchLR spaces
 
@@ -30,6 +31,6 @@ patternLR =  "⎨"  item  item  item  "⎬"
 
 
 
-literal =  | "⎨"  | item  | item  | item  | "⎬" 
+literal =  | "⎨"  | item  | item  | item  | "⎬"  | bracket
 }
 
