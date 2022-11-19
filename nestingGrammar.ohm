@@ -43,6 +43,6 @@ NestingGrammar {
     | "⎣" innerItems "⎦"
   innerItems = innerItem+
 
-patternLR =  "[" innerItem+ "]"  "⇉"  "["  innerItem+ "]" 
+patternLR =  "[" innerItems "]"  "⇉"  "["  innerItems "]" 
 
 }
