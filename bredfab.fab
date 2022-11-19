@@ -17,6 +17,7 @@ Run {
   matchLR_dtypebracket [lb m* rb] = \‛\«lb\»\«m\»\«rb\»\’
   matchLR_messagebracket [lb m* rb] = \‛\«lb\»\«m\»\«rb\»\’
   bracket [c] = \‛\«c\»\’
+  connector [c] = \‛\«c\»\’
   item [spaces1 matchLR spaces2] = \‛\«spaces1\»\«matchLR\»\«spaces2\»\’
   literal [c] =  \‛\«c\»\’
   

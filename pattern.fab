@@ -16,10 +16,11 @@ Run {
   matchLR_dtypebracket [lb m* rb] = ‛«lb»«m»«rb»’
   matchLR_messagebracket [lb m* rb] = ‛«lb»«m»«rb»’
   bracket [c] = ‛«c»’
+  connector [c] = ‛«c»’
   item [spaces1 matchLR spaces2] = ‛«spaces1»«matchLR»«spaces2»’
   literal [c] =  ‛«c»’
   
-  patternLR [ ignore1  direction  sender  receiver  ignore2 ] = 
-‛⟨Connection «direction» «sender» «receiver»⟩’
+  patternLR [ ignore1  s  sp  ignore2  ignore3  ignore4  r  rp  ignore5 ] = 
+‛⟨Sender «s» «sp»⟩⟨Receiver «r» «rp»⟩’
 }
 

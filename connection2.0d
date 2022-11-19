@@ -1,0 +1,5 @@
+pattern matching error<br><br>Line 1, col 16:
+> 1 | ⎨▫down [š ✕in] ⇉ [❲leaf 1❳ ✕in]⎬
+                     ^
+  2 | 
+Expected "⎬"

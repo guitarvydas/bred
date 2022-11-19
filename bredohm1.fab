@@ -24,14 +24,17 @@ Run {
     | "⎨" matchLR* "⎬" -- connectionbracket
     | "⎡" matchLR* "⎤" -- sender
     | "⎣" matchLR* "⎦" -- receiver
+    | "[" matchLR* "]" spaces "⇉" spaces "[" matchLR* "]" -- senderreceiver
     | char+ -- char
 
 
   bracket =
     | "(" | ")" | "{" | "}" | "[" | "]" | "<" | ">"
     |  "❲" |  "❳" |  "«" | "»" | "⟨" |  "⟩" | "⟪" | "⟫"
-    | "⎨" | "⎬" | "⎡"| "⎤" | "⎣"| "⎦"
-    | "⇉" | "↑" | "↓"
+    | "⎨" | "⎬" | "⎡"| "⎤" | "⎣" | "⎦"
+
+  connector =
+    | "⇉"
 
   item = spaces matchLR spaces
 
