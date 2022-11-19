@@ -10,12 +10,25 @@ Run {
   main = spaces matchLR spaces
   char =  ~space ~literal any
 
-   matchLR =
-     | space+ -- atLeastOneSpace
-     | patternLR -- pattern
-     | char+ -- char
+  matchLR =
+    | space+ -- atLeastOneSpace
+    | patternLR -- pattern
+    | "(" matchLR* ")" -- paren
+    | "{" matchLR* "}" -- brace
+    | "[" matchLR* "]" -- squarebracket
+    | "<" matchLR* ">" -- anglebracket
+    | "❲" matchLR* "❳" -- namebracket
+    | "«" matchLR* "»" -- varbracket
+    | "⟨" matchLR* "⟩" -- dtypebracket
+    | "⟪" matchLR* "⟫" -- messagebracket
+    | char+ -- char
 
-   item = spaces matchLR spaces
+  bracket =
+    | "(" | ")" | "{" | "}" | "[" | "]" | "<" | ">"
+    |  "❲" |  "❳" |  "«" | "»" | "⟨" |  "⟩" | "⟪" | "⟫"
+
+  item = spaces matchLR spaces
+
 patternLR = «firstitem»
 
 ’

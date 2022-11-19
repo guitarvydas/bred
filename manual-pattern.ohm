@@ -9,6 +9,13 @@ Run {
      | space+ -- atLeastOneSpace
      | patternLR -- pattern
      | "(" matchLR* ")" -- paren
+     | "{" matchLR* "}" -- brace
+     | "[" matchLR* "]" -- squarebracket
+     | "<" matchLR* ">" -- anglebracket
+     | "❲" matchLR* "❳" -- namebracket
+     | "«" matchLR* "»" -- varbracket
+     | "⟨" matchLR* "⟩" -- dtypebracket
+     | "⟪" matchLR* "⟫" -- messagebracket
      | char+ -- char
 
    item = spaces matchLR spaces

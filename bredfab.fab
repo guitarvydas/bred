@@ -8,7 +8,15 @@ Run {
   matchLR_atLeastOneSpace [sp+] = \‛\«sp\»\’
   matchLR_pattern [lr] = \‛\«lr\»\’
   matchLR_char [char+] = \‛\«char\»\’
-
+  matchLR_paren [lb m* rb] = \‛\«lb\»\«m\»\«rb\»’
+  matchLR_brace [lb m* rb] = \‛\«lb\»\«m\»\«rb\»’
+  matchLR_squarebrack [lb m* rb] = \‛\«lb\»\«m\»\«rb\»’
+  matchLR_anglebracket [lb m* rb] = \‛\«lb\»\«m\»\«rb\»’
+  matchLR_namebracket [lb m* rb] = \‛\«lb\»\«m\»\«rb\»’
+  matchLR_varbracket [lb m* rb] = \‛\«lb\»\«m\»\«rb\»’
+  matchLR_dtypebracket [lb m* rb] = \‛\«lb\»\«m\»\«rb\»’
+  matchLR_messagebracket [lb m* rb] = \‛\«lb\»\«m\»\«rb\»’
+  bracket [c] = \‛\«c\»\’
   item [spaces1 matchLR spaces2] = \‛\«spaces1\»\«matchLR\»\«spaces2\»\’
   literal [c] =  \‛\«c\»\’
   
