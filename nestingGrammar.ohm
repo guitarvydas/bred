@@ -1,0 +1,48 @@
+NestingGrammar {
+
+// test: ⎨▫down [š ✕in] ⇉ [❲leaf 1❳ ✕in]⎬
+
+  topLevelBracketedItem =
+    | &beginBracket innerItem          -- x
+    | space+                           -- y
+    | anyOtherChar+                    -- z
+
+  innerItem =
+    | patternLR                        -- a
+    | innerItem+ connector innerItem+  -- b
+    | bracketedItem                    -- c
+    | space+                           -- d
+    | anyOtherChar+                    -- e
+
+  beginBracket =
+    | "(" | "{" | "[" | "<"
+    |  "❲" |  "«" | "⟨" | "⟪"
+    | "⎨" | "⎡" | "⎣"
+
+  bracket =
+    | "(" | ")" | "{" | "}" | "[" | "]" | "<" | ">"
+    |  "❲" |  "❳" |  "«" | "»" | "⟨" |  "⟩" | "⟪" | "⟫"
+    | "⎨" | "⎬" | "⎡"| "⎤" | "⎣" | "⎦"
+
+  connector =
+    | "⇉"
+
+  anyOtherChar = (~connector ~bracket any)
+
+  bracketedItem =
+    | "(" innerItems ")"
+    | "{" innerItems "}"
+    | "[" innerItems "]"
+    | "<" innerItems ">"
+    | "❲" innerItems "❳"
+    | "«" innerItems "»" 
+    | "⟨" innerItems "⟩" 
+    | "⟪" innerItems "⟫"
+    | "⎨" innerItems "⎬" 
+    | "⎡" innerItems "⎤" 
+    | "⎣" innerItems "⎦"
+  innerItems = innerItem+
+
+patternLR =  "[" innerItem+ "]"  "⇉"  "["  innerItem+ "]" 
+
+}

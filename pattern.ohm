@@ -3,9 +3,10 @@ Run {
 
   top = main+
   main = spaces matchLR spaces
-  char =  ~space ~literal any
+  char =  ~space ~literal ~bracket ~connector any
 
   matchLR =
+    | item+ "⇉" item+ -- connected
     | space+ -- atLeastOneSpace
     | patternLR -- pattern
     | "(" matchLR* ")" -- paren
@@ -19,14 +20,13 @@ Run {
     | "⎨" matchLR* "⎬" -- connectionbracket
     | "⎡" matchLR* "⎤" -- sender
     | "⎣" matchLR* "⎦" -- receiver
-    | "[" matchLR* "]" spaces "⇉" spaces "[" matchLR* "]" -- senderreceiver
     | char+ -- char
 
 
   bracket =
     | "(" | ")" | "{" | "}" | "[" | "]" | "<" | ">"
     |  "❲" |  "❳" |  " | " | "⟨" |  "⟩" | "⟪" | "⟫"
-    | "⎨" | "⎬" | "⎡"| "⎤" | "⎣"| "⎦"
+    | "⎨" | "⎬" | "⎡"| "⎤" | "⎣" | "⎦"
 
   connector =
     | "⇉"
@@ -39,6 +39,6 @@ patternLR =  "["  item  item  "]"  "⇉"  "["  item  item  "]"
 
 
 
-literal =  | "["  | item  | item  | "]"  | "⇉"  | "["  | item  | item  | "]"  | bracket | connector
+literal =  | "["  | item  | item  | "]"  | "⇉"  | "["  | item  | item  | "]" 
 }
 

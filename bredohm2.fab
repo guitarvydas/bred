@@ -3,7 +3,7 @@ Bred {
 
 
   firstPattern [lq firstitem+ rq] = ‛
-literal = «firstitem» | bracket | connector
+literal = «firstitem»
 }
 ’
 
