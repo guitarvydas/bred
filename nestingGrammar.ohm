@@ -9,7 +9,7 @@ NestingGrammar {
 // test: ⎨x (š y) (z w)⎬
 // test: a(d)
 //
-// test:  (in ⇓ ❲leaf 1❳ in)
+// test:  ⎨in ⇓ ❲leaf 1❳ in⎬
 // goal: 
 //   ⎨in ⇓ ❲leaf 1❳ in⎬
 //   ⎨in ⇑ ❲leaf 1❳ in⎬
@@ -17,15 +17,15 @@ NestingGrammar {
 //   ⎨in ⤻ out⎬
 
   topLevel = 
-    | runOfNonBrackets bracketed topLevel  -- nbbt
-    | runOfNonBrackets bracketed           -- nbb
+    | runOfNonBrackets bracketed topLevel  -- rnbbt
+    | runOfNonBrackets bracketed           -- rnbb
     | bracketed                            -- b
-    | runOfNonBrackets                     -- nb
+    | runOfNonBrackets                     -- rnb
 
   runOfNonBrackets = (~bracket any)+
   
   bracketed =
-  | patternLR1 -- pattern
+  | pattern        -- pattern
   | builtinBracket -- bib
 
   builtinBracket =
@@ -51,6 +51,7 @@ NestingGrammar {
 
   item =
     | bracketed
+    | connector
     | runOfUninterestingChars
 
   runOfUninterestingChars = uninterestingChar+
@@ -70,7 +71,8 @@ NestingGrammar {
   connector =
     | "⇉" | "⇓" | "⇑" | "⇒" | "⤻"
 
-patternLR1 =  "⟪"  spaces item  spaces item  spaces item  spaces item  spaces "⟫" 
+patternLR1 =  "⟪"  spaces item  spaces item  spaces item  spaces item  spaces "⟫"
+pattern = patternLR1
 literal1 =  | "⟪"  | item  | item  | item  | item  | "⟫" 
 literal = literal1
 }
