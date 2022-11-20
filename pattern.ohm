@@ -33,12 +33,13 @@ Run {
 
   item = spaces matchLR spaces
 
-patternLR =  "["  item  item  "]"  "⇉"  "["  item  item  "]" 
+patternLR =  "⟪"  item  item  item  item  "⟫" 
 
 
 
 
 
-literal =  | "["  | item  | item  | "]"  | "⇉"  | "["  | item  | item  | "]" 
+
+literal =  | "⟪"  | item  | item  | item  | item  | "⟫" 
 }
 

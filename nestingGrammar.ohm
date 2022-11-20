@@ -1,6 +1,15 @@
 NestingGrammar {
 
+// test: a b c
+// test: ( d e f )
 // test: a b c ( d e f )
+// test: a b c ( d e f ) g h i
+// test: ⟪◦o ϕ š m⟫
+// test: ⎨▫down (š ✕in) (❲leaf 1❳ ✕in)⎬
+// test: ⎨x (š y) (z w)⎬
+// test: a(d)
+//
+// test:  (in ⇓ ❲leaf 1❳ in)
 // goal: 
 //   ⎨in ⇓ ❲leaf 1❳ in⎬
 //   ⎨in ⇑ ❲leaf 1❳ in⎬
@@ -8,27 +17,44 @@ NestingGrammar {
 //   ⎨in ⤻ out⎬
 
   topLevel = 
-    | runOfNonBrackets bracketed topLevel -- nbb
+    | runOfNonBrackets bracketed topLevel  -- nbbt
+    | runOfNonBrackets bracketed           -- nbb
     | bracketed                            -- b
     | runOfNonBrackets                     -- nb
-    |                                      -- empty
 
   runOfNonBrackets = (~bracket any)+
   
-  bracketed = 
-    | "(" spaces itemsWithSpaces ")" spaces -- ii1a
-    | "(" spaces ")" spaces -- ii1b
-    | "(" ")" spaces -- ii1c
+  bracketed =
+  | patternLR1 -- pattern
+  | builtinBracket -- bib
+
+  builtinBracket =
+  | brack<"(", ")"> -- ii1
+  | brack<"{", "}"> -- ii2
+  | brack<"[", "]"> -- ii3
+  | brack<"<", ">"> -- ii4
+  | brack<"❲", "❳"> -- ii5
+  | brack<"«", "»"> -- ii6
+  | brack<"⟨", "⟩"> -- ii7
+  | brack<"⟪", "⟫"> -- ii8
+  | brack<"⎨", "⎬"> -- ii9
+  | brack<"⎡", "⎤"> -- ii10
+  | brack<"⎣", "⎦"> -- ii11
+
+  brack<lb,rb> =
+    | lb itemsWithSpaces spaces rb spaces -- ii1a
+    | lb spaces rb spaces -- ii1b
+    | lb rb spaces -- ii1c
 
   itemsWithSpaces = itemWithSpaces+
-  itemWithSpaces = item spaces
+  itemWithSpaces = spaces item
 
   item =
     | bracketed
     | runOfUninterestingChars
 
   runOfUninterestingChars = uninterestingChar+
-  uninterestingChar = ~space ~bracket ~connector any
+  uninterestingChar = ~literal ~space ~bracket ~connector any
 
   innerItem =
     | bracketed
@@ -37,9 +63,14 @@ NestingGrammar {
   innerItems = spaces (innerItem spaces)*
 
   bracket =
-    | "(" | ")"
+    | "(" | ")" | "{" | "}" | "[" | "]" | "<" | ">"
+    |  "❲" |  "❳" |  "«" | "»" | "⟨" |  "⟩" | "⟪" | "⟫"
+    | "⎨" | "⎬" | "⎡"| "⎤" | "⎣" | "⎦"
 
   connector =
     | "⇉" | "⇓" | "⇑" | "⇒" | "⤻"
 
+patternLR1 =  "⟪"  spaces item  spaces item  spaces item  spaces item  spaces "⟫" 
+literal1 =  | "⟪"  | item  | item  | item  | item  | "⟫" 
+literal = literal1
 }

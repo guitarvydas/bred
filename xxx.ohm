@@ -1,0 +1,11 @@
+  | brack<"(", ")"> -- ii1
+  | brack<"{", "}"> -- ii2
+  | brack<"[", "]"> -- ii3
+  | brack<"<", ">"> -- ii4
+  | brack<"❲", "❳"> -- ii5
+  | brack<"«", "»"> -- ii6
+  | brack<"⟨", "⟩"> -- ii7
+  | brack<"⟪", "⟫"> -- ii8
+  | brack<"⎨", "⎬"> -- ii9
+  | brack<"⎡", "⎤"> -- ii10
+  | brack<"⎣", "⎦"> -- ii11

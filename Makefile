@@ -3,7 +3,8 @@
 all: fab/fab firstToSecond
 
 dev:
-	./dev.bash senderreceiver.bred connection2.u0d >connection2.0d
+	./dev.bash message.bred shortcontainer.u0d >shortcontainer.0d
+	# ./dev.bash senderreceiver.bred connection2.u0d >connection2.0d
 	cat connection2.0d
 
 firstToSecond:
