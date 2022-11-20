@@ -71,7 +71,8 @@ NestingGrammar {
   connector =
     | "⇉" | "⇓" | "⇑" | "⇒" | "⤻"
 
-patternLR1 =  "⟪"  spaces item  spaces item  spaces item  spaces item  spaces "⟫"
+patternLR1 =  "⟪"  spitem  spitem  spitem  spitem  spaces "⟫"
+spitem = itemWithSpaces
 pattern = patternLR1
 literal1 =  | "⟪"  | item  | item  | item  | item  | "⟫" 
 literal = literal1
