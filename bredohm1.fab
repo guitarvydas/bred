@@ -62,6 +62,9 @@ NestingGrammar {
 
   spitem = itemWithSpaces
   spitemsp = itemWithSpaces spaces
+
+patternLR = «firstPattern»
+
 ’
 
   firstPattern [lq firstitem+ rq] = ‛«firstitem» ’
