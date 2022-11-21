@@ -68,7 +68,8 @@ NestingGrammar {
     | bracketed
     | runOfUninterestingChars
     
-  innerItems = spaces (innerItem spaces)*
+  innerItems = spaces innerItemSpaces*
+  innerItemSpaces = innerItem spaces
 
   bracket =
     | "(" | ")" | "{" | "}" | "[" | "]" | "<" | ">"
