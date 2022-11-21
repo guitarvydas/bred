@@ -62,9 +62,9 @@ patternLR1 [lb  spitem1  spitem2  spitem3  spitem4  spaces rb] = ‛«lb»«spit
 spitem [itemWithSpaces] = ‛«itemWithSpaces»’
 spitemsp [itemWithSpaces spaces] = ‛«itemWithSpaces»’
 patternLR2 [lb spitemsp down spitemsp2 spitemsp3 rb] = ‛⟨Connection ⟨Direction down⟩ ⟨Sender š «spitemsp»⟩ ⟨Receiver «spitemsp2» «spitemsp3»⟩⟩’
-patternLR3 [lb spitemsp spitemsp2 up spitemsp3 rb]=  ‛⟨Connection ⟨Direction up⟩ ⟨Sender «spitemsp2» «spitemsp3»⟩ ⟨Receiver  š «spitemsp3»⟩⟩’
-patternLR4 [lb spitemsp spitemsp2 across spitemsp3 spitemsp4 rb]= ‛⟨Connection ⟨Direction across⟩ ⟨Sender «spitemsp» «spitemsp2»⟩ ⟨Sender «spitemsp3» «spitemsp4»⟩⟩’
-patternLR5 [lb spitemsp through spitemsp2 rb] = ‛⟨Connection ⟨Direction ❲pass through❳⟩ ⟨Sender š «spitemsp»⟩ ⟨Receiver š «spitemsp»⟩⟩’
+patternLR3 [lb spitemsp spitemsp2 up spitemsp3 rb]=  ‛⟨Connection ⟨Direction up⟩ ⟨Sender «spitemsp» «spitemsp2»⟩ ⟨Receiver  š «spitemsp3»⟩⟩’
+patternLR4 [lb spitemsp spitemsp2 across spitemsp3 spitemsp4 rb]= ‛⟨Connection ⟨Direction across⟩ ⟨Sender «spitemsp» «spitemsp2»⟩ ⟨Receiver «spitemsp3» «spitemsp4»⟩⟩’
+patternLR5 [lb spitemsp through spitemsp2 rb] = ‛⟨Connection ⟨Direction ❲pass through❳⟩ ⟨Sender š «spitemsp»⟩ ⟨Receiver š «spitemsp2»⟩⟩’
 literal1 [x] = ‛«x»’
 
 pattern [p] = ‛«p»’

@@ -89,6 +89,6 @@ patternLR4 = "⎨" spitemsp spitemsp "⇒" spitemsp spitemsp "⎬"
 patternLR5 = "⎨" spitemsp "⤻" spitemsp "⎬"
 literal1 =  | "⟪"  | item  | item  | item  | item  | "⟫" 
 
-pattern = patternLR2
+pattern = patternLR3
 literal = literal1
 }
