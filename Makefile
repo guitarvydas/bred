@@ -13,7 +13,7 @@ dev:
 	# test part 2 of the generated parser, using bredohm2.fab to generate part 2
 	# part 2 generates a list of literals used in the match pattern (pattern1)
 	# the list of literals might contain redundancy, but, it doesn't matter - the engine will skip the redundant bits if it matches the first possibly-redundant item
-	##./fab/fab - Bred ${bdir}/bred.ohm ${bdir}/bredohm2.fab <message.bred >>pattern.ohm
+	./fab/fab - Bred ${bdir}/bred.ohm ${bdir}/bredohm2.fab <message.bred >>pattern.ohm
 	# ./dev.bash message.bred shortcontainer.u0d >shortcontainer.0d
 	# ./dev.bash senderreceiver.bred connection2.u0d >connection2.0d
 	cat pattern.ohm
