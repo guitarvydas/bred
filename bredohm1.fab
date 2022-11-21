@@ -60,6 +60,8 @@ NestingGrammar {
   connector =
     | "⇉" | "⇓" | "⇑" | "⇒" | "⤻"
 
+  spitem = itemWithSpaces
+  spitemsp = itemWithSpaces spaces
 ’
 
   firstPattern [lq firstitem+ rq] = ‛«firstitem» ’

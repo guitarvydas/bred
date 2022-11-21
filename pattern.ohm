@@ -59,4 +59,10 @@ NestingGrammar {
   connector =
     | "⇉" | "⇓" | "⇑" | "⇒" | "⤻"
 
+  spitem = itemWithSpaces
+  spitemsp = itemWithSpaces spaces
+
+
+literal =  | "⟪"  | item  | item  | item  | item  | "⟫" 
+}
 
