@@ -16,16 +16,20 @@ NestingGrammar {
 // test: ⎨❲leaf 1❳ ✕in ⇒ ❲leaf 2❳ ✕in⎬
 // test: ⎨✕in ⤻ out⎬
 //
-// test: ⎨✕in ⇓ ❲leaf 1❳ ✕in⎬
-// test:  ⎨❲leaf 1❳ ▫out ⇑ ▫out⎬
-// test: ⎨❲leaf 1❳ ▫out ⇒ ❲leaf 2❳ ✕in⎬
-// test: ⎨✕in ⤻ ▫out⎬
+// test:
+// ⎨✕in ⇓ ❲leaf 1❳ ✕in⎬
+// ⎨❲leaf 1❳ ▫out ⇑ ▫out⎬
+// ⎨❲leaf 1❳ ▫out ⇒ ❲leaf 2❳ ✕in⎬
+// ⎨✕in ⤻ ▫out⎬
 //
 
-  topLevel_rnbbt [rnb b t] = ‛«rnb»«b»«t»’
-  topLevel_rnbb [rnb b] = ‛«rnb»«b»’
-  topLevel_b [b] = ‛«b»’
-  topLevel_rnb [rnb] = ‛«rnb»’
+  topLevel [topLevelItemSpace+] = ‛«topLevelItemSpace»’
+  topLevelItemSpace [topLevelItem spaces] = ‛«topLevelItem»«spaces»’
+
+  topLevelItem_rnbbt [rnb b t] = ‛«rnb»«b»«t»’
+  topLevelItem_rnbb [rnb b] = ‛«rnb»«b»’
+  topLevelItem_b [b] = ‛«b»’
+  topLevelItem_rnb [rnb] = ‛«rnb»’
 
   runOfNonBrackets [cs+] = ‛«cs»’
   
@@ -56,11 +60,11 @@ NestingGrammar {
 
 patternLR1 [lb  spitem1  spitem2  spitem3  spitem4  spaces rb] = ‛«lb»«spitem1»«spitem2»«spitem3»«spitem4»«spaces»«rb»’
 spitem [itemWithSpaces] = ‛«itemWithSpaces»’
-spitemsp [itemWithSpaces spaces] = ‛«itemWithSpaces»«spaces»’
-patternLR2 [lb spitemsp down spitemsp2 spitemsp3 rb] = ‛«lb»«spitemsp»«down»«spitemsp2»«spitemsp3»«rb»’
-patternLR3 [lb spitemsp spitemsp2 up spitemsp3 rb]=  ‛«lb»«spitemsp»«spitemsp2»«down»«spitemsp3»«rb»’
-patternLR4 [lb spitemsp spitemsp2 across spitemsp3 spitemsp4 rb]= ‛«lb»«spitemsp»«spitemsp2»«across»«spitemsp3»«spitemsp4»«rb»’
-patternLR5 [lb spitemsp through spitemsp2 rb] = ‛«lb»«spitemsp»«through»«spitemsp2»«rb»’
+spitemsp [itemWithSpaces spaces] = ‛«itemWithSpaces»’
+patternLR2 [lb spitemsp down spitemsp2 spitemsp3 rb] = ‛⟨Connection ⟨Direction down⟩ ⟨Sender š «spitemsp»⟩ ⟨Receiver «spitemsp2» «spitemsp3»⟩⟩’
+patternLR3 [lb spitemsp spitemsp2 up spitemsp3 rb]=  ‛⟨Connection ⟨Direction up⟩ ⟨Sender «spitemsp2» «spitemsp3»⟩ ⟨Receiver  š «spitemsp3»⟩⟩’
+patternLR4 [lb spitemsp spitemsp2 across spitemsp3 spitemsp4 rb]= ‛⟨Connection ⟨Direction across⟩ ⟨Sender «spitemsp» «spitemsp2»⟩ ⟨Sender «spitemsp3» «spitemsp4»⟩⟩’
+patternLR5 [lb spitemsp through spitemsp2 rb] = ‛⟨Connection ⟨Direction ❲pass through❳⟩ ⟨Sender š «spitemsp»⟩ ⟨Receiver š «spitemsp»⟩⟩’
 literal1 [x] = ‛«x»’
 
 pattern [p] = ‛«p»’

@@ -22,8 +22,9 @@ NestingGrammar {
 // test: ⎨✕in ⤻ ▫out⎬
 //
 
-
-  topLevel = 
+  topLevel = topLevelItemSpace+
+  topLevelItemSpace = topLevelItem spaces
+  topLevelItem = 
     | runOfNonBrackets bracketed topLevel  -- rnbbt
     | runOfNonBrackets bracketed           -- rnbb
     | bracketed                            -- b
