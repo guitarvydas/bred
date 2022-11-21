@@ -39,7 +39,3 @@ patternLR =  "⟪"  item  item  item  item  "⟫"
 
 
 
-
-literal =  | "⟪"  | item  | item  | item  | item  | "⟫" 
-}
-
