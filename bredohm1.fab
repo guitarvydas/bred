@@ -1,32 +1,56 @@
 Bred {
   main [spaces1 firstPattern spaces2 secondPattern spaces3] = ‛
-Run {
-«spaces1»«firstPattern»«spaces2»«secondPattern»«spaces3»
-’
+NestingGrammar {
 
+  topLevel = topLevelItemSpace+
+  topLevelItemSpace = topLevelItem spaces
+  topLevelItem = 
+    | runOfNonBrackets bracketed topLevel  -- rnbbt
+    | runOfNonBrackets bracketed           -- rnbb
+    | bracketed                            -- b
+    | runOfNonBrackets                     -- rnb
 
-  firstPattern [lq firstitem+ rq] = ‛
-  top = main+
-  main = spaces matchLR spaces
-  char =  ~space ~literal ~bracket ~connector any
+  runOfNonBrackets = (~bracket any)+
+  
+  bracketed =
+  | pattern        -- pattern
+  | builtinBracket -- bib
 
-  matchLR =
-    | item+ "⇉" item+ -- connected
-    | space+ -- atLeastOneSpace
-    | patternLR -- pattern
-    | "(" matchLR* ")" -- paren
-    | "{" matchLR* "}" -- brace
-    | "[" matchLR* "]" -- squarebracket
-    | "<" matchLR* ">" -- anglebracket
-    | "❲" matchLR* "❳" -- namebracket
-    | "\«" matchLR* "\»" -- varbracket
-    | "⟨" matchLR* "⟩" -- dtypebracket
-    | "⟪" matchLR* "⟫" -- messagebracket
-    | "⎨" matchLR* "⎬" -- connectionbracket
-    | "⎡" matchLR* "⎤" -- sender
-    | "⎣" matchLR* "⎦" -- receiver
-    | char+ -- char
+  builtinBracket =
+  | brack<"(", ")"> -- ii1
+  | brack<"{", "}"> -- ii2
+  | brack<"[", "]"> -- ii3
+  | brack<"<", ">"> -- ii4
+  | brack<"❲", "❳"> -- ii5
+  | brack<"«", "»"> -- ii6
+  | brack<"⟨", "⟩"> -- ii7
+  | brack<"⟪", "⟫"> -- ii8
+  | brack<"⎨", "⎬"> -- ii9
+  | brack<"⎡", "⎤"> -- ii10
+  | brack<"⎣", "⎦"> -- ii11
 
+  brack<lb,rb> =
+    | lb itemsWithSpaces spaces rb spaces -- ii1a
+    | lb spaces rb spaces -- ii1b
+    | lb rb spaces -- ii1c
+
+  itemsWithSpaces = itemWithSpaces+
+  itemWithSpaces = spaces item
+
+  item =
+    | bracketed
+    | connector
+    | runOfUninterestingChars
+
+  runOfUninterestingChars = uninterestingChar+
+  uninterestingChar = ~literal ~space ~bracket ~connector any
+
+  innerItem =
+    | bracketed
+    | runOfUninterestingChars
+    
+  innerItems = spaces innerItemSpaces*
+  innerItemSpaces = innerItem spaces
 
   bracket =
     | "(" | ")" | "{" | "}" | "[" | "]" | "<" | ">"
@@ -34,14 +58,11 @@ Run {
     | "⎨" | "⎬" | "⎡"| "⎤" | "⎣" | "⎦"
 
   connector =
-    | "⇉"
-
-  item = spaces matchLR spaces
-
-patternLR = «firstitem»
+    | "⇉" | "⇓" | "⇑" | "⇒" | "⤻"
 
 ’
 
+  firstPattern [lq firstitem+ rq] = ‛«firstitem» ’
   firstitem_variable [lq name rq] = ‛ item ’
   firstitem_space [c] = ‛’
   firstitem_characters [c+] = ‛ "«c»" ’
