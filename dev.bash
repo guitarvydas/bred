@@ -6,6 +6,5 @@ bdir=./
 ./fab/fab - Bred ${bdir}/bred.ohm ${bdir}/bredohm2.fab <$1 >>${pattern}.ohm
 cat pattern.ohm
 ./fab/fab - Bred ${bdir}/bred.ohm ${bdir}/bredfab.fab --support=${bdir}/support.js <$1 > ${pattern}.fab
-cat pattern.fab
-./fab/fab - Run ${pattern}.ohm ${pattern}.fab <$2
+./fab/fab - NestingGrammar ${pattern}.ohm ${pattern}.fab <$2
 

@@ -1,0 +1,73 @@
+
+NestingGrammar {
+
+  topLevel = topLevelItemSpace+
+  topLevelItemSpace = topLevelItem spaces
+  topLevelItem = 
+    | runOfNonBrackets bracketed topLevel  -- rnbbt
+    | runOfNonBrackets bracketed           -- rnbb
+    | bracketed                            -- b
+    | runOfNonBrackets                     -- rnb
+
+  runOfNonBrackets = (~bracket any)+
+  
+  bracketed =
+  | pattern        -- pattern
+  | builtinBracket -- bib
+
+  builtinBracket =
+  | brack<"(", ")"> -- ii1
+  | brack<"{", "}"> -- ii2
+  | brack<"[", "]"> -- ii3
+  | brack<"<", ">"> -- ii4
+  | brack<"❲", "❳"> -- ii5
+  | brack<"«", "»"> -- ii6
+  | brack<"⟨", "⟩"> -- ii7
+  | brack<"⟪", "⟫"> -- ii8
+  | brack<"⎨", "⎬"> -- ii9
+  | brack<"⎡", "⎤"> -- ii10
+  | brack<"⎣", "⎦"> -- ii11
+
+  brack<lb,rb> =
+    | lb itemsWithSpaces spaces rb spaces -- ii1a
+    | lb spaces rb spaces -- ii1b
+    | lb rb spaces -- ii1c
+
+  itemsWithSpaces = itemWithSpaces+
+  itemWithSpaces = spaces item
+
+  item =
+    | bracketed
+    | connector
+    | runOfUninterestingChars
+
+  runOfUninterestingChars = uninterestingChar+
+  uninterestingChar = ~literal ~space ~bracket ~connector any
+
+  innerItem =
+    | bracketed
+    | runOfUninterestingChars
+    
+  innerItems = spaces innerItemSpaces*
+  innerItemSpaces = innerItem spaces
+
+  bracket =
+    | "(" | ")" | "{" | "}" | "[" | "]" | "<" | ">"
+    |  "❲" |  "❳" |  " | " | "⟨" |  "⟩" | "⟪" | "⟫"
+    | "⎨" | "⎬" | "⎡"| "⎤" | "⎣" | "⎦"
+
+  connector =
+    | "⇉" | "⇓" | "⇑" | "⇒" | "⤻"
+
+  spitem = itemWithSpaces
+  spitemsp = itemWithSpaces spaces
+
+pattern =  "⟪"  spitemsp  spitemsp  spitemsp  spitemsp  "⟫"  
+
+
+
+literal =  | "⟪"  | item  | item  | item  | item  | "⟫" 
+}
+
+shortcontainer.u0d
+⟨Message ◦o ϕ š m⟩
