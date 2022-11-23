@@ -40,6 +40,8 @@ spitem [itemWithSpaces] = \‛\«itemWithSpaces\»\’
 spitemsp [itemWithSpaces spaces] = \‛\«itemWithSpaces\»\’
 
 literal [c] = \‛\«c\»\’
+«spaces1»«firstPattern»«spaces2»«secondPattern»«spaces3»
+
 }
 ’
 

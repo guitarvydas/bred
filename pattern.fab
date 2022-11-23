@@ -1,46 +1,47 @@
-FORMAT: syntax error in fabrication specification
-rightmostPosition=1404
-Bred {
-  main [spaces1 firstPattern spaces2 secondPattern spaces3] = ‛
+
 NestingGrammar {
-  topLevel [topLevelItemSpace+] = ‛\«topLevelItemSpace\»\’
-  topLevelItemSpace [topLevelItem spaces] = \‛\«topLevelItem\»\«spaces\»\’
+  topLevel [topLevelItemSpace+] = ‛«topLevelItemSpace»’
+  topLevelItemSpace [topLevelItem spaces] = ‛«topLevelItem»«spaces»’
 
-  topLevelItem_rnbbt [rnb b t] = \‛\«rnb\»\«b\»\«t\»\’
-  topLevelItem_rnbb [rnb b] = \‛\«rnb\»\«b\»\’
-  topLevelItem_b [b] = \‛\«b\»\’
-  topLevelItem_rnb [rnb] = \‛\«rnb\»\’
+  topLevelItem_rnbbt [rnb b t] = ‛«rnb»«b»«t»’
+  topLevelItem_rnbb [rnb b] = ‛«rnb»«b»’
+  topLevelItem_b [b] = ‛«b»’
+  topLevelItem_rnb [rnb] = ‛«rnb»’
 
-  runOfNonBrackets [cs+] = \‛\«cs\»\’
+  runOfNonBrackets [cs+] = ‛«cs»’
   
-  bracketed_pattern [p] = \‛\«p\»\’
-  bracketed_bib [b] = \‛\«b\»\’
+  bracketed_pattern [p] = ‛«p»’
+  bracketed_bib [b] = ‛«b»’
 
-  builtinBracket [x] = \‛\«x\»\’
+  builtinBracket [x] = ‛«x»’
 
-  brack_ii1a [lb itemsWithSpaces spaces rb spaces2] = \‛\«lb\»\«itemsWithSpaces\»\«spaces\»\«rb\»\«spaces2\»\’
-  brack_ii1b [lb spaces rb spaces2] = \‛\«lb\»\«spaces\»\«rb\»\«spaces2\»\’
-  brack_ii1c [lb rb spaces2] = \‛\«lb\»\«rb\»\«spaces2\»\’
+  brack_ii1a [lb itemsWithSpaces spaces rb spaces2] = ‛«lb»«itemsWithSpaces»«spaces»«rb»«spaces2»’
+  brack_ii1b [lb spaces rb spaces2] = ‛«lb»«spaces»«rb»«spaces2»’
+  brack_ii1c [lb rb spaces2] = ‛«lb»«rb»«spaces2»’
 
-  itemsWithSpaces [itemWithSpaces+] = \‛\«itemWithSpaces\»\’
-  itemWithSpaces [spaces item] = \‛\«spaces\»\«item\»\’
+  itemsWithSpaces [itemWithSpaces+] = ‛«itemWithSpaces»’
+  itemWithSpaces [spaces item] = ‛«spaces»«item»’
 
-  item [i] = \‛\«i\»\’
+  item [i] = ‛«i»’
 
-  runOfUninterestingChars [uninterestingChar+] = \‛\«uninterestingChar\»\’
-  uninterestingChar [c] = \‛\«c\»\’
+  runOfUninterestingChars [uninterestingChar+] = ‛«uninterestingChar»’
+  uninterestingChar [c] = ‛«c»’
 
-  innerItem [i] = \‛\«i\»\’
+  innerItem [i] = ‛«i»’
     
-  innerItems [spaces innerItemSpaces*] = \‛\«spaces\»\«innerItemSpaces\»\’
-  innerItemSpaces [innerItem spaces] = \‛\«innerItem\»\«spaces\»\’
+  innerItems [spaces innerItemSpaces*] = ‛«spaces»«innerItemSpaces»’
+  innerItemSpaces [innerItem spaces] = ‛«innerItem»«spaces»’
 
-  bracket [b] = \‛\«b\»\’
-  connector [c] = \‛\«c\»\’
+  bracket [b] = ‛«b»’
+  connector [c] = ‛«c»’
 
-spitem [itemWithSpaces] = \‛\«itemWithSpaces\»\’
-spitemsp [itemWithSpaces spaces] = \‛\«itemWithSpaces\»\’
+spitem [itemWithSpaces] = ‛«itemWithSpaces»’
+spitemsp [itemWithSpaces spaces] = ‛«itemWithSpaces»’
 
 literal [c] = ‛«c»’
+pattern [ ignore1  p  d  s  m  ignore2 ] = 
+‛⟨Message «p» «d» «s» «m»⟩’
+
+
 }
 
