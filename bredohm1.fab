@@ -22,7 +22,7 @@ NestingGrammar {
   | brack<"[", "]"> -- ii3
   | brack<"<", ">"> -- ii4
   | brack<"❲", "❳"> -- ii5
-  | brack<"«", "»"> -- ii6
+  | brack<"\«", "\»"> -- ii6
   | brack<"⟨", "⟩"> -- ii7
   | brack<"⟪", "⟫"> -- ii8
   | brack<"⎨", "⎬"> -- ii9
@@ -63,7 +63,7 @@ NestingGrammar {
   spitem = itemWithSpaces
   spitemsp = itemWithSpaces spaces
 
-patternLR = «firstPattern»
+pattern = «firstPattern»
 
 ’
 

@@ -1,31 +1,49 @@
 Bred {
   main [spaces1 firstPattern spaces2 secondPattern spaces3] = ‛
-Run {
-  top [main+] = \‛\«main\»\’
-  main [spaces1 patternLR spaces2] = \‛\«spaces1\»\«patternLR\»\«spaces2\»\’
-  char [c] = \‛\«c\»\’
+NestingGrammar {
+  topLevel [topLevelItemSpace+] = ‛\«topLevelItemSpace\»\’
+  topLevelItemSpace [topLevelItem spaces] = \‛\«topLevelItem\»\«spaces\»\’
 
-  matchLR_atLeastOneSpace [sp+] = \‛\«sp\»\’
-  matchLR_pattern [lr] = \‛\«lr\»\’
-  matchLR_char [char+] = \‛\«char\»\’
-  matchLR_paren [lb m* rb] = \‛\«lb\»\«m\»\«rb\»\’
-  matchLR_brace [lb m* rb] = \‛\«lb\»\«m\»\«rb\»\’
-  matchLR_squarebracket [lb m* rb] = \‛\«lb\»\«m\»\«rb\»\’
-  matchLR_anglebracket [lb m* rb] = \‛\«lb\»\«m\»\«rb\»\’
-  matchLR_namebracket [lb m* rb] = \‛\«lb\»\«m\»\«rb\»\’
-  matchLR_varbracket [lb m* rb] = \‛\«lb\»\«m\»\«rb\»\’
-  matchLR_dtypebracket [lb m* rb] = \‛\«lb\»\«m\»\«rb\»\’
-  matchLR_messagebracket [lb m* rb] = \‛\«lb\»\«m\»\«rb\»\’
-  bracket [c] = \‛\«c\»\’
-  connector [c] = \‛\«c\»\’
-  item [spaces1 matchLR spaces2] = \‛\«spaces1\»\«matchLR\»\«spaces2\»\’
-  literal [c] =  \‛\«c\»\’
+  topLevelItem_rnbbt [rnb b t] = \‛\«rnb\»\«b\»\«t\»\’
+  topLevelItem_rnbb [rnb b] = \‛\«rnb\»\«b\»\’
+  topLevelItem_b [b] = \‛\«b\»\’
+  topLevelItem_rnb [rnb] = \‛\«rnb\»\’
+
+  runOfNonBrackets [cs+] = \‛\«cs\»\’
   
-  «spaces1»«firstPattern»«spaces2»«secondPattern»«spaces3»
+  bracketed_pattern [p] = \‛\«p\»\’
+  bracketed_bib [b] = \‛\«b\»\’
+
+  builtinBracket [x] = \‛\«x\»\’
+
+  brack_ii1a [lb itemsWithSpaces spaces rb spaces2] = \‛\«lb\»\«itemsWithSpaces\»\«spaces\»\«rb\»\«spaces2\»\’
+  brack_ii1b [lb spaces rb spaces2] = \‛\«lb\»\«spaces\»\«rb\»\«spaces2\»\’
+  brack_ii1c [lb rb spaces2] = \‛\«lb\»\«rb\»\«spaces2\»\’
+
+  itemsWithSpaces [itemWithSpaces+] = \‛\«itemWithSpaces\»\’
+  itemWithSpaces [spaces item] = \‛\«spaces\»\«item\»\’
+
+  item [i] = \‛\«i\»\’
+
+  runOfUninterestingChars [uninterestingChar+] = \‛\«uninterestingChar\»\’
+  uninterestingChar [c] = \‛\«c\»\’
+
+  innerItem [i] = \‛\«i\»\’
+    
+  innerItems [spaces innerItemSpaces*] = \‛\«spaces\»\«innerItemSpaces\»\’
+  innerItemSpaces [innerItem spaces] = \‛\«innerItem\»\«spaces\»\’
+
+  bracket [b] = \‛\«b\»\’
+  connector [c] = \‛\«c\»\’
+
+spitem [itemWithSpaces] = \‛\«itemWithSpaces\»\’
+spitemsp [itemWithSpaces spaces] = \‛\«itemWithSpaces\»\’
+
+literal [c] = \‛\«c\»\’
 }
 ’
 
-  firstPattern [lq firstitem+ rq] = ‛patternLR [«firstitem»] = ’
+  firstPattern [lq firstitem+ rq] = ‛pattern [«firstitem»] = ’
   firstitem_variable [lq name rq] = ‛ «name» ’
   firstitem_space [c] = ‛’
   firstitem_characters [c+] = ‛ «gensym ("ignore")» ’
