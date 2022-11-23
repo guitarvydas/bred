@@ -39,7 +39,7 @@ spitem [itemWithSpaces] = ‛«itemWithSpaces»’
 spitemsp [itemWithSpaces spaces] = ‛«itemWithSpaces»’
 
 literal [c] = ‛«c»’
-pattern [k1 p  d  s  m k2] = ‛⟨Message~port=«p»~«d»~«s»~«m»⟩’
+pattern [k1 p  d  s  m k2] = ‛⟨Message «p» «d» «s» «m»⟩’
 
 }
 

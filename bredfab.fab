@@ -51,7 +51,7 @@ pattern \[«firstPattern»\] = \‛«secondPattern»\’
   firstitem_characters [c+] = ‛«gensym ("k")»’
   secondPattern [lq seconditem+ rq] = ‛«seconditem»’
   seconditem_variable [lq name rq] = ‛\««name»\»’
-  seconditem_space [s] = ‛~’
+  seconditem_space [s] = ‛ ’
   seconditem_characters [c+] = ‛«c»’
 
   name [nameFirst nameRest*] = ‛«nameFirst»«nameRest»’

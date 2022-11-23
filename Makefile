@@ -20,14 +20,14 @@ manual:
 	./fab/fab - Bred ${bdir}/bred.ohm ${bdir}/bredfab.fab <message.bred --support=support.js >pattern.fab
 	#
 	# cat pattern.fab
-	##./fab/fab - NestingGrammar pattern.ohm pattern.fab <shortcontainer.u0d
+	./fab/fab - NestingGrammar pattern.ohm pattern.fab <shortcontainer.u0d >shortcontainer.0d
 	#
 	# ./dev.bash message.bred shortcontainer.u0d >shortcontainer.0d
 	# ./dev.bash senderreceiver.bred connection2.u0d >connection2.0d
 
-	@echo
-	@echo "Use pe with pattern.ohm and pattern.fab"
-	@echo
+	# @echo
+	# @echo "Use pe with pattern.ohm and pattern.fab"
+	# @echo
 
 firstToSecond:
 	./bred.bash message.bred container.0d >container.0d.out
