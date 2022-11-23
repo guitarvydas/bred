@@ -68,7 +68,7 @@ pattern = «firstPattern»
 ’
 
   firstPattern [lq firstitem+ rq] = ‛«firstitem» ’
-  firstitem_variable [lq name rq] = ‛ item ’
+  firstitem_variable [lq name rq] = ‛ spitemsp ’
   firstitem_space [c] = ‛’
   firstitem_characters [c+] = ‛ "«c»" ’
   secondPattern [lq seconditem+ rq] = ‛’
