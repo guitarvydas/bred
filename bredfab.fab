@@ -40,16 +40,16 @@ spitem [itemWithSpaces] = \‛\«itemWithSpaces\»\’
 spitemsp [itemWithSpaces spaces] = \‛\«itemWithSpaces\»\’
 
 literal [c] = \‛\«c\»\’
-pattern = ‛«secondPattern»’
+pattern \[«firstPattern»\] = \‛«secondPattern»\’
 
 }
 ’
 
-  firstPattern [lq firstitem+ rq] = ‛’
-  firstitem_variable [lq name rq] = ‛’
+  firstPattern [lq firstitem+ rq] = ‛«firstitem»’
+  firstitem_variable [lq name rq] = ‛ «name» ’
   firstitem_space [c] = ‛’
   firstitem_characters [c+] = ‛’
-  secondPattern [lq seconditem+ rq] = ‛«lq»«seconditem»«rq»’
+  secondPattern [lq seconditem+ rq] = ‛«seconditem»’
   seconditem_variable [lq name rq] = ‛ \««name»\»’
   seconditem_space [s] = ‛’
   seconditem_characters [c+] = ‛«c»’
