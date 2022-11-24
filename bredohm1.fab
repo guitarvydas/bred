@@ -39,11 +39,10 @@ NestingGrammar {
 
   item =
     | bracketed
-    | connector
     | runOfUninterestingChars
 
   runOfUninterestingChars = uninterestingChar+
-  uninterestingChar = ~literal ~space ~bracket ~connector any
+  uninterestingChar = ~literal ~space ~bracket any
 
   innerItem =
     | bracketed
@@ -57,8 +56,6 @@ NestingGrammar {
     |  "❲" |  "❳" |  "«" | "»" | "⟨" |  "⟩" | "⟪" | "⟫"
     | "⎨" | "⎬" | "⎡"| "⎤" | "⎣" | "⎦"
 
-  connector =
-    | "⇉" | "⇓" | "⇑" | "⇒" | "⤻"
 
   spitem = itemWithSpaces
   spitemsp = itemWithSpaces spaces

@@ -34,7 +34,6 @@ NestingGrammar {
   innerItemSpaces [innerItem spaces] = \‛\«innerItem\»\«spaces\»\’
 
   bracket [b] = \‛\«b\»\’
-  connector [c] = \‛\«c\»\’
 
 spitem [itemWithSpaces] = \‛\«itemWithSpaces\»\’
 spitemsp [itemWithSpaces spaces] = \‛\«itemWithSpaces\»\’
