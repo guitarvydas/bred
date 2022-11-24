@@ -1,1 +1,6 @@
-pattern matching error<br><br>grammar 'Run' not found in given grammars
+pattern matching error<br><br>Line 29, col 35:
+  28 |   #lang js (self) «
+> 29 |     self.children.forEach (child => {
+                                         ^
+  30 |         child.container = self;
+Expected ")"
