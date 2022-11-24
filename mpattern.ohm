@@ -9,7 +9,7 @@ NestingGrammar {
     | bracketed                            -- b
     | runOfNonBrackets                     -- rnb
 
-  runOfNonBrackets = (~bracket any)+
+  runOfNonBrackets = uninterestingChar+
   
   bracketed =
   | pattern        -- pattern

@@ -9,7 +9,7 @@ NestingGrammar {
     | bracketed                            -- b
     | runOfNonBrackets                     -- rnb
 
-  runOfNonBrackets = (~bracket any)+
+  runOfNonBrackets = uninterestingChar+
   
   bracketed =
   | pattern        -- pattern
@@ -59,10 +59,10 @@ NestingGrammar {
   spitem = itemWithSpaces
   spitemsp = itemWithSpaces spaces
 
-pattern =  "⟪"  spitemsp  spitemsp  spitemsp  spitemsp  "⟫"  
+pattern =  "◦"  spitemsp  
 
 
 
-literal =  | "⟪"  | item  | item  | item  | item  | "⟫" 
+literal =  | "◦"  | item 
 }
 

@@ -4,9 +4,9 @@ bdir=./
 
 all: fab/fab firstToSecond
 
-dev: manual1
+dev: manual
 
-manual1:
+manual:
 	# test that bred.ohm parses the spec
 	./fab/fab - Bred ${bdir}/bred.ohm ${bdir}/bredidentity.fab <message.bred
 	# test part 1 of the generated parser, using bredohm1.fab to generate part 1
@@ -19,11 +19,16 @@ manual1:
 	# test fab generator - bredfab.fab creates pattern.fab
 	./fab/fab - Bred ${bdir}/bred.ohm ${bdir}/bredfab.fab <message.bred --support=support.js >mpattern.fab
 	#
-	# cat pattern.fab
 	./fab/fab - NestingGrammar mpattern.ohm mpattern.fab <shortcontainer.u0d >shortcontainer.0d
 	#
 	./dev.bash message.bred shortcontainer.u0d >shortcontainer.00d
 	cat shortcontainer.00d
+
+	./dev.bash outputport.bred shortcontainer.00d >shortcontainer.000d
+	cat shortcontainer.000d
+
+	./dev.bash outputport.bred outputport.u0d >outputport.0d
+	cat outputport.0d
 
 firstToSecond:
 	./bred.bash connection.bred connection.u0d >connection.0d
