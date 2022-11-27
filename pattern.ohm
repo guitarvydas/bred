@@ -1,68 +1,28 @@
 
 NestingGrammar {
 
-  topLevel = topLevelItemSpace+
-  topLevelItemSpace = topLevelItem spaces
-  topLevelItem = 
-    | runOfNonBrackets bracketed topLevel  -- rnbbt
-    | runOfNonBrackets bracketed           -- rnbb
-    | bracketed                            -- b
-    | runOfNonBrackets                     -- rnb
-
-  runOfNonBrackets = uninterestingChar+
+  topLevel [items+] = ‛«items»’
   
-  bracketed =
-  | pattern        -- pattern
-  | builtinBracket -- bib
+  item_pattern [p] = ‛«p»’
+  item_variable [v] = ‛«v»’
+  item_bracketed [b] = ‛«b»’
+  item_spaces [s] = ‛«s»’
+  item_chars [c] = ‛«c»’
 
-  builtinBracket =
-  | brack<"(", ")"> -- ii1
-  | brack<"{", "}"> -- ii2
-  | brack<"[", "]"> -- ii3
-  | brack<"<", ">"> -- ii4
-  | brack<"❲", "❳"> -- ii5
-  | brack<"«", "»"> -- ii6
-  | brack<"⟨", "⟩"> -- ii7
-  | brack<"⟪", "⟫"> -- ii8
-  | brack<"⎨", "⎬"> -- ii9
-  | brack<"⎡", "⎤"> -- ii10
-  | brack<"⎣", "⎦"> -- ii11
+  runOfSpaces [s+] = ‛«s»’
+  runOfUninterestingChars [cs+] = ‛«cs»’
+  uninterestingChar [c] = ‛«c»’
 
-  brack<lb,rb> =
-    | lb itemsWithSpaces spaces rb spaces -- ii1a
-    | lb spaces rb spaces -- ii1b
-    | lb rb spaces -- ii1c
+  variable [lb name rb] = ‛««name»»’
+  bracket [c] = ‛«c»’
+  // bracketed [x] ... handled implicitly by Ohm-JS
+  brack [lb item+ rb] = ‛«item»’
+  name [n] = ‛«n»’
+  bracketedName [lb cs+ rb] = ‛❲«cs»❳’
+  classicName [nFirst nRest*] = ‛«nFirst»«nRest»’
+  nameFirst [c] = ‛«c»’
+  nameRest [c] = ‛«c»’
 
-  itemsWithSpaces = itemWithSpaces+
-  itemWithSpaces = spaces item
+  literal [c] = ‛«c»’
 
-  item =
-    | bracketed
-    | runOfUninterestingChars
-
-  runOfUninterestingChars = uninterestingChar+
-  uninterestingChar = ~literal ~space ~bracket any
-
-  innerItem =
-    | bracketed
-    | runOfUninterestingChars
-    
-  innerItems = spaces innerItemSpaces*
-  innerItemSpaces = innerItem spaces
-
-  bracket =
-    | "(" | ")" | "{" | "}" | "[" | "]" | "<" | ">"
-    |  "❲" |  "❳" |  " | " | "⟨" |  "⟩" | "⟪" | "⟫"
-    | "⎨" | "⎬" | "⎡"| "⎤" | "⎣" | "⎦"
-
-
-  spitem = itemWithSpaces
-  spitemsp = itemWithSpaces spaces
-
-pattern =  "⟪"  spitemsp  spitemsp  spitemsp  spitemsp  "⟫"  
-
-
-
-literal =  | "⟪"  | item  | item  | item  | item  | "⟫" 
-}
 
