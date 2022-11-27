@@ -35,10 +35,10 @@ NestingGrammar {
   bracket [b] = ‛«b»’
 
 spitem [itemWithSpaces] = ‛«itemWithSpaces»’
-spitemsp [itemWithSpaces spaces] = ‛«itemWithSpaces»’
+spitemsp [itemWithSpaces spaces] = ‛«itemWithSpaces»«spaces»’
 
 literal [c] = ‛«c»’
-pattern [k1 p ] = ‛⟨#Output «p»⟩’
+pattern [k1 p   d   s   m k2] = ‛⟨Message «p» «d» «s» «m»⟩’
 
 }
 

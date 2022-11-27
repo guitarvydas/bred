@@ -59,10 +59,10 @@ NestingGrammar {
   spitem = itemWithSpaces
   spitemsp = itemWithSpaces spaces
 
-pattern =  "◦"  spitemsp  
+pattern =  "⟪"  spitemsp  spitemsp  spitemsp  spitemsp  "⟫"  
 
 
 
-literal =  | "◦"  | item 
+literal =  | "⟪"  | item  | item  | item  | item  | "⟫" 
 }
 
