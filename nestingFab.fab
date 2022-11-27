@@ -22,6 +22,6 @@ NestingGrammar {
   nameFirst [c] = ‛«c»’
   nameRest [c] = ‛«c»’
 
-  pattern [k1 i2 s3 i4 s5 i6 s7 i8 k9 ] = ‛⟨Message «i2» «i4» «i6» «i8»⟩’
+  pattern [_k1 p _s2 d _s3 s _s4 m _k5 ] = ‛⟨Message «p» «d» «s» «m»⟩’
   literal [c] = ‛«c»’
 }
