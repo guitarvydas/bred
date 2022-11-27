@@ -30,7 +30,9 @@ manual:
 	# # ./dev.bash outputport.bred outputport.u0d >outputport.0d
 	# # cat outputport.0d
 
-	cat pattern.ohm
+	@echo
+	@echo
+	diff pattern.ohm nestingFab.fab
 
 
 firstToSecond:

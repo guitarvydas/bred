@@ -8,12 +8,12 @@ Bred {
   firstitem =
     | "«" name "»" -- variable
     | space -- space
-    | (~"«" ~"»" ~"‛" ~"’" ~space any)+ -- characters
+    | (~"«" ~"»" ~"‛" ~"’" ~space any) -- character
   secondPattern = "‛" seconditem+ "’"
   seconditem =
     | "«" name "»" -- variable
     | space -- space
-    | (~"«" ~"»" ~"‛" ~"’" ~space any)+ -- characters
+    | (~"«" ~"»" ~"‛" ~"’" ~space any) -- character
 
   name = nameFirst nameRest*
   nameFirst = letter

@@ -14,7 +14,7 @@ NestingGrammar {
   runOfUninterestingChars [cs+] = \‛\«cs\»\’
   uninterestingChar [c] = \‛\«c\»\’
 
-  variable [lb name rb] = \‛\\«\«name\»\\»\’
+  variable [lb name rb] = \‛\\\\\«\«name\»\\\\\»\’
   bracket [c] = \‛\«c\»\’
   // bracketed [x] ... handled implicitly by Ohm-JS
   brack [lb item+ rb] = \‛\«item\»\’
@@ -31,11 +31,11 @@ NestingGrammar {
   firstPattern [lq firstitem+ rq] = ‛«firstitem» ’
   firstitem_variable [lq name rq] = ‛ spitemsp ’
   firstitem_space [c] = ‛’
-  firstitem_characters [c+] = ‛ "«c»" ’
+  firstitem_character [c] = ‛ "«c»" ’
   secondPattern [lq seconditem+ rq] = ‛’
   seconditem_variable [lq name rq] = ‛’
   seconditem_space [c] = ‛’
-  seconditem_characters [c+] = ‛’
+  seconditem_character [c] = ‛’
 
   name [nameFirst nameRest*] = ‛«nameFirst»«nameRest»’
   nameFirst [letter] = ‛«letter»’
