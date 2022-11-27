@@ -1,28 +1,63 @@
 
 NestingGrammar {
 
-  topLevel [items+] = ‛«items»’
+// test: a b c
+// test: ( d e f )
+// test: a b c ( d e f )
+// test: a b c ( d e f ) g h i
+// test: ⟪◦o ϕ š m⟫
+// test: ⎨▫down (š ✕in) (❲leaf 1❳ ✕in)⎬
+// test: ⎨x (š y) (z w)⎬
+// test: a(d)
+//
+// test: ⎨in ⇓ ❲leaf 1❳ in⎬
+// test: a b c ⎨in ⇓ ❲leaf 1❳ in⎬ g h i
+//
+// test:  ⎨❲leaf 1❳ out ⇑ out⎬
+// test: ⎨❲leaf 1❳ ✕in ⇒ ❲leaf 2❳ ✕in⎬
+// test: ⎨✕in ⤻ out⎬
+//
+// test: ⎨✕in ⇓ ❲leaf 1❳ ✕in⎬
+// test:  ⎨❲leaf 1❳ ▫out ⇑ ▫out⎬
+// test: ⎨❲leaf 1❳ ▫out ⇒ ❲leaf 2❳ ✕in⎬
+// test: ⎨✕in ⤻ ▫out⎬
+//
+
+  topLevel = item+
+  item =
+    | pattern   -- pattern
+    | variable  -- variable
+    | bracketed -- bracketed
+    | runOfSpaces -- spaces
+    | runOfUninterestingChars      -- chars
+
+  runOfSpaces = space+
+  runOfUninterestingChars = uninterestingChar+
+  uninterestingChar = ~pattern ~variable ~bracket ~space any
   
-  item_pattern [p] = ‛«p»’
-  item_variable [v] = ‛«v»’
-  item_bracketed [b] = ‛«b»’
-  item_spaces [s] = ‛«s»’
-  item_chars [c] = ‛«c»’
+  variable = "«" name "»"
+  bracket =
+    | "(" | ")" | "{" | "}" | "[" | "]" | "<" | ">"
+    |  "❲" |  "❳" |  "«" | "»" | "⟨" |  "⟩" | "⟪" | "⟫"
+    | "⎨" | "⎬" | "⎡"| "⎤" | "⎣" | "⎦"
+  bracketed =
+    | brack<"(", ")"> -- br1
+    | brack<"{", "}"> -- br2
+    | brack<"[", "]"> -- br3
+    | brack<"<", ">"> -- br4
+    | brack<"❲", "❳"> -- br5
+    | brack<"⟨", "⟩"> -- br6
+    | brack<"⟪", "⟫"> -- br7
+    | brack<"⎨", "⎬"> -- br8
+    | brack<"⎡", "⎤"> -- br9
+    | brack<"⎣", "⎦"> -- br10
 
-  runOfSpaces [s+] = ‛«s»’
-  runOfUninterestingChars [cs+] = ‛«cs»’
-  uninterestingChar [c] = ‛«c»’
+  brack<lb,rb> = lb item+ rb
+  name = bracketedName | classicName
+  bracketedName = "❲" (~"❳" any)+ "❳"
+  classicName = nameFirst nameRest*
+  nameFirst = letter | "_"
+  nameRest = alnum | nameFirst
 
-  variable [lb name rb] = ‛\««name»\»’
-  bracket [c] = ‛«c»’
-  // bracketed [x] ... handled implicitly by Ohm-JS
-  brack [lb item+ rb] = ‛«item»’
-  name [n] = ‛«n»’
-  bracketedName [lb cs+ rb] = ‛❲«cs»❳’
-  classicName [nFirst nRest*] = ‛«nFirst»«nRest»’
-  nameFirst [c] = ‛«c»’
-  nameRest [c] = ‛«c»’
-
-  literal [c] = ‛«c»’
 
 

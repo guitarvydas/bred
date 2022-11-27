@@ -1,11 +1,8 @@
 Bred {
-  main [spaces1 pattern spaces2 secondPattern spaces3] = ‛«pattern»’
+  main [spaces1 firstPattern spaces2 secondPattern spaces3] = ‛«secondPattern»’
 
 
-  firstPattern [lq firstitem+ rq] = ‛
-literal = «firstitem»
-}
-’
+  firstPattern [lq firstitem+ rq] = ‛’
 
   firstitem_variable [lq name rq] = ‛ | item ’
   firstitem_space [c] = ‛’
