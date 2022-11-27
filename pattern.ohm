@@ -60,4 +60,4 @@ NestingGrammar {
   nameRest = alnum | nameFirst
 
 
-
+  pattern = "⟪" item " " item " " item " " item "⟫" 

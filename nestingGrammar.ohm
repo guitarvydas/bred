@@ -59,6 +59,6 @@ NestingGrammar {
   nameRest = alnum | nameFirst
 
 
-  pattern =  "⟪"  item  " " item  " " item  " " item "⟫"
-  literal =  "⟪" | " " | " " | " "  | "⟫" | bracket
+  pattern = "⟪" item " " item " " item " " item "⟫"
+  literal = "⟪" | " " | " " | " "  | "⟫" | bracket
 }

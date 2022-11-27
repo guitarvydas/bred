@@ -15,7 +15,7 @@ manual:
 	# # test part 2 of the generated parser, using bredohm2.fab to generate part 2
 	# # part 2 generates a list of literals used in the match pattern (pattern1)
 	# # the list of literals might contain redundancy, but, it doesn't matter - the engine will skip the redundant bits if it matches the first (redundant) item
-	# ./fab/fab - Bred ${bdir}/bred.ohm ${bdir}/bredohm2.fab --support=support.js <message.bred >>pattern.ohm
+	./fab/fab - Bred ${bdir}/bred.ohm ${bdir}/bredohm2.fab --support=support.js <message.bred >>pattern.ohm
 	# # test fab generator - bredfab.fab creates pattern.fab
 	# ./fab/fab - Bred ${bdir}/bred.ohm ${bdir}/bredfab.fab <message.bred --support=support.js >pattern.fab
 	# #

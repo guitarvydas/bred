@@ -60,7 +60,6 @@ NestingGrammar {
   nameFirst = letter | "_"
   nameRest = alnum | nameFirst
 
-
 ’
 
   firstPattern [lq firstitem+ rq] = ‛«firstitem» ’
