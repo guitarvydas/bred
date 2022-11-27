@@ -61,10 +61,10 @@ NestingGrammar {
   nameRest = alnum | nameFirst
 ’
 
-  firstPattern [lq firstitem+ rq] = ‛«firstitem» ’
-  firstitem_variable [lq name rq] = ‛«gensym("i")» ’
-  firstitem_space [c] = ‛«gensym("s")» ’
-  firstitem_character [c] = ‛«gensym("k")» ’
+  firstPattern [lq firstitem+ rq] = ‛’
+  firstitem_variable [lq name rq] = ‛’
+  firstitem_space [c] = ‛’
+  firstitem_character [c] = ‛’
   secondPattern [lq seconditem+ rq] = ‛’
   seconditem_variable [lq name rq] = ‛’
   seconditem_space [c] = ‛’

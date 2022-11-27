@@ -1,44 +1,28 @@
 
 NestingGrammar {
-  topLevel [topLevelItemSpace+] = ‛«topLevelItemSpace»’
-  topLevelItemSpace [topLevelItem spaces] = ‛«topLevelItem»«spaces»’
 
-  topLevelItem_rnbbt [rnb b t] = ‛«rnb»«b»«t»’
-  topLevelItem_rnbb [rnb b] = ‛«rnb»«b»’
-  topLevelItem_b [b] = ‛«b»’
-  topLevelItem_rnb [rnb] = ‛«rnb»’
-
-  runOfNonBrackets [cs+] = ‛«cs»’
+  topLevel [items+] = ‛«items»’
   
-  bracketed_pattern [p] = ‛«p»’
-  bracketed_bib [b] = ‛«b»’
+  item_pattern [p] = ‛«p»’
+  item_variable [v] = ‛«v»’
+  item_bracketed [b] = ‛«b»’
+  item_spaces [s] = ‛«s»’
+  item_chars [c] = ‛«c»’
 
-  builtinBracket [x] = ‛«x»’
-
-  brack_ii1a [lb itemsWithSpaces spaces rb spaces2] = ‛«lb»«itemsWithSpaces»«spaces»«rb»«spaces2»’
-  brack_ii1b [lb spaces rb spaces2] = ‛«lb»«spaces»«rb»«spaces2»’
-  brack_ii1c [lb rb spaces2] = ‛«lb»«rb»«spaces2»’
-
-  itemsWithSpaces [itemWithSpaces+] = ‛«itemWithSpaces»’
-  itemWithSpaces [spaces item] = ‛«spaces»«item»’
-
-  item [i] = ‛«i»’
-
-  runOfUninterestingChars [uninterestingChar+] = ‛«uninterestingChar»’
+  runOfSpaces [s+] = ‛«s»’
+  runOfUninterestingChars [cs+] = ‛«cs»’
   uninterestingChar [c] = ‛«c»’
 
-  innerItem [i] = ‛«i»’
-    
-  innerItems [spaces innerItemSpaces*] = ‛«spaces»«innerItemSpaces»’
-  innerItemSpaces [innerItem spaces] = ‛«innerItem»«spaces»’
+  variable [lb name rb] = ‛\««name»\»’
+  bracket [c] = ‛«c»’
+  // bracketed [x] ... handled implicitly by Ohm-JS
+  brack [lb item+ rb] = ‛«item»’
+  name [n] = ‛«n»’
+  bracketedName [lb cs+ rb] = ‛❲«cs»❳’
+  classicName [nFirst nRest*] = ‛«nFirst»«nRest»’
+  nameFirst [c] = ‛«c»’
+  nameRest [c] = ‛«c»’
 
-  bracket [b] = ‛«b»’
-
-spitem [itemWithSpaces] = ‛«itemWithSpaces»’
-spitemsp [itemWithSpaces spaces] = ‛«itemWithSpaces»«spaces»’
-
-literal [c] = ‛«c»’
-pattern [k1 p   d   s   m k2] = ‛⟨Message «p» «d» «s» «m»⟩’
-
-}
+  literal [c] = ‛«c»’
+  pattern [k1 p " " d " " s " " m k2 ] = 
 

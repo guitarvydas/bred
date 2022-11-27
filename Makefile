@@ -18,8 +18,8 @@ manual:
 	# part 3 generates a list of literals used in the match pattern (pattern1)
 	# the list of literals might contain redundancy, but, it doesn't matter - the engine will skip the redundant bits if it matches the first (redundant) item
 	./fab/fab - Bred ${bdir}/bred.ohm ${bdir}/bredohm3.fab --support=support.js <message.bred >>pattern.ohm
-	# # test fab generator - bredfab.fab creates pattern.fab
-	# ./fab/fab - Bred ${bdir}/bred.ohm ${bdir}/bredfab.fab <message.bred --support=support.js >pattern.fab
+	# test fab generator - bredfab.fab creates pattern.fab
+	./fab/fab - Bred ${bdir}/bred.ohm ${bdir}/bredfab.fab <message.bred --support=support.js >pattern.fab
 	# #
 	# ./fab/fab - NestingGrammar pattern.ohm pattern.fab <shortcontainer.u0d >shortcontainer.0d
 	# #
@@ -34,7 +34,7 @@ manual:
 
 	@echo
 	@echo
-	diff pattern.ohm nestingGrammar.ohm
+	diff nestingFab.fab pattern.fab
 
 
 firstToSecond:
