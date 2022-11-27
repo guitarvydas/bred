@@ -27,8 +27,10 @@ NestingGrammar {
     | pattern   -- pattern
     | variable  -- variable
     | bracketed -- bracketed
+    | runOfSpaces -- spaces
     | runOfUninterestingChars      -- char
 
+  runOfSpaces = space+
   runOfUninterestingChars = uninterestingChar+
   uninterestingChar = ~pattern ~variable ~bracket ~space any
   
