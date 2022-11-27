@@ -59,5 +59,6 @@ NestingGrammar {
   nameFirst = letter | "_"
   nameRest = alnum | nameFirst
 
-
   pattern = "⟪" item " " item " " item " " item "⟫" 
+  literal = | "⟪" | " " | " " | " " | "⟫" | bracket
+}

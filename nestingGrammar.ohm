@@ -60,5 +60,5 @@ NestingGrammar {
 
 
   pattern = "⟪" item " " item " " item " " item "⟫"
-  literal = "⟪" | " " | " " | " "  | "⟫" | bracket
+  literal = | "⟪" | " " | " " | " "  | "⟫" | bracket
 }
