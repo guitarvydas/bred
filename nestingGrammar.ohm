@@ -22,73 +22,43 @@ NestingGrammar {
 // test: ⎨✕in ⤻ ▫out⎬
 //
 
-  topLevel = topLevelItemSpace+
-  topLevelItemSpace = topLevelItem spaces
-  topLevelItem = 
-    | runOfNonBrackets bracketed topLevel  -- rnbbt
-    | runOfNonBrackets bracketed           -- rnbb
-    | bracketed                            -- b
-    | runOfNonBrackets                     -- rnb
-
-  runOfNonBrackets = (~bracket any)+
-  
-  bracketed =
-  | pattern        -- pattern
-  | builtinBracket -- bib
-
-  builtinBracket =
-  | brack<"(", ")"> -- ii1
-  | brack<"{", "}"> -- ii2
-  | brack<"[", "]"> -- ii3
-  | brack<"<", ">"> -- ii4
-  | brack<"❲", "❳"> -- ii5
-  | brack<"«", "»"> -- ii6
-  | brack<"⟨", "⟩"> -- ii7
-  | brack<"⟪", "⟫"> -- ii8
-  | brack<"⎨", "⎬"> -- ii9
-  | brack<"⎡", "⎤"> -- ii10
-  | brack<"⎣", "⎦"> -- ii11
-
-  brack<lb,rb> =
-    | lb itemsWithSpaces spaces rb spaces -- ii1a
-    | lb spaces rb spaces -- ii1b
-    | lb rb spaces -- ii1c
-
-  itemsWithSpaces = itemWithSpaces+
-  itemWithSpaces = spaces item
-
+  topLevel = item+
   item =
-    | bracketed
-    | connector
-    | runOfUninterestingChars
+    | pattern   -- pattern
+    | variable  -- variable
+    | bracketed -- bracketed
+    | runOfSpaces -- spaces
+    | runOfUninterestingChars      -- chars
 
+  runOfSpaces = space+
   runOfUninterestingChars = uninterestingChar+
-  uninterestingChar = ~literal ~space ~bracket ~connector any
-
-  innerItem =
-    | bracketed
-    | runOfUninterestingChars
-    
-  innerItems = spaces innerItemSpaces*
-  innerItemSpaces = innerItem spaces
-
+  uninterestingChar = ~pattern ~variable ~bracket ~space any
+  
+  variable = "«" name "»"
   bracket =
     | "(" | ")" | "{" | "}" | "[" | "]" | "<" | ">"
     |  "❲" |  "❳" |  "«" | "»" | "⟨" |  "⟩" | "⟪" | "⟫"
     | "⎨" | "⎬" | "⎡"| "⎤" | "⎣" | "⎦"
+  bracketed =
+    | brack<"(", ")"> -- br1
+    | brack<"{", "}"> -- br2
+    | brack<"[", "]"> -- br3
+    | brack<"<", ">"> -- br4
+    | brack<"❲", "❳"> -- br5
+    | brack<"⟨", "⟩"> -- br6
+    | brack<"⟪", "⟫"> -- br7
+    | brack<"⎨", "⎬"> -- br8
+    | brack<"⎡", "⎤"> -- br9
+    | brack<"⎣", "⎦"> -- br10
 
-  connector =
-    | "⇉" | "⇓" | "⇑" | "⇒" | "⤻"
+  brack<lb,rb> = lb item+ rb
+  name = bracketedName | classicName
+  bracketedName = "❲" (~"❳" any)+ "❳"
+  classicName = nameFirst nameRest*
+  nameFirst = letter | "_"
+  nameRest = alnum | nameFirst
 
-patternLR1 =  "⟪"  spitem  spitem  spitem  spitem  spaces "⟫"
-spitem = itemWithSpaces
-spitemsp = itemWithSpaces spaces
-patternLR2 = "⎨" spitemsp "⇓" spitemsp spitemsp"⎬"
-patternLR3 = "⎨" spitemsp spitemsp "⇑" spitemsp"⎬"
-patternLR4 = "⎨" spitemsp spitemsp "⇒" spitemsp spitemsp "⎬"
-patternLR5 = "⎨" spitemsp "⤻" spitemsp "⎬"
-literal1 =  | "⟪"  | item  | item  | item  | item  | "⟫" 
 
-pattern = patternLR3
-literal = literal1
+  pattern = "⟪" item " " item " " item " " item "⟫"
+  literal = | "⟪" | " " | " " | " "  | "⟫" | bracket
 }

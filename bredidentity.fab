@@ -5,11 +5,11 @@ Bred {
 
   firstitem_variable [lq name rq] = ‛ «lq»«name»«rq»’
   firstitem_space [c] = ‛«c»’
-  firstitem_characters [c+] = ‛ "«c»" ’
+  firstitem_character [c] = ‛ "«c»" ’
   secondPattern [lq seconditem+ rq] = ‛«lq»«seconditem»«rq»’
   seconditem_variable [lq name rq] = ‛«lq»«name»«rq»’
   seconditem_space [c] = ‛«c»’
-  seconditem_characters [c+] = ‛«c»’
+  seconditem_character [c] = ‛«c»’
 
   name [nameFirst nameRest*] = ‛«nameFirst»«nameRest»’
   nameFirst [letter] = ‛«letter»’

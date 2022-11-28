@@ -2,76 +2,73 @@ Bred {
   main [spaces1 firstPattern spaces2 secondPattern spaces3] = ‛
 NestingGrammar {
 
-  topLevel = topLevelItemSpace+
-  topLevelItemSpace = topLevelItem spaces
-  topLevelItem = 
-    | runOfNonBrackets bracketed topLevel  -- rnbbt
-    | runOfNonBrackets bracketed           -- rnbb
-    | bracketed                            -- b
-    | runOfNonBrackets                     -- rnb
+// test: a b c
+// test: ( d e f )
+// test: a b c ( d e f )
+// test: a b c ( d e f ) g h i
+// test: ⟪◦o ϕ š m⟫
+// test: ⎨▫down (š ✕in) (❲leaf 1❳ ✕in)⎬
+// test: ⎨x (š y) (z w)⎬
+// test: a(d)
+//
+// test: ⎨in ⇓ ❲leaf 1❳ in⎬
+// test: a b c ⎨in ⇓ ❲leaf 1❳ in⎬ g h i
+//
+// test:  ⎨❲leaf 1❳ out ⇑ out⎬
+// test: ⎨❲leaf 1❳ ✕in ⇒ ❲leaf 2❳ ✕in⎬
+// test: ⎨✕in ⤻ out⎬
+//
+// test: ⎨✕in ⇓ ❲leaf 1❳ ✕in⎬
+// test:  ⎨❲leaf 1❳ ▫out ⇑ ▫out⎬
+// test: ⎨❲leaf 1❳ ▫out ⇒ ❲leaf 2❳ ✕in⎬
+// test: ⎨✕in ⤻ ▫out⎬
+//
 
-  runOfNonBrackets = uninterestingChar+
-  
-  bracketed =
-  | pattern        -- pattern
-  | builtinBracket -- bib
-
-  builtinBracket =
-  | brack<"(", ")"> -- ii1
-  | brack<"{", "}"> -- ii2
-  | brack<"[", "]"> -- ii3
-  | brack<"<", ">"> -- ii4
-  | brack<"❲", "❳"> -- ii5
-  | brack<"\«", "\»"> -- ii6
-  | brack<"⟨", "⟩"> -- ii7
-  | brack<"⟪", "⟫"> -- ii8
-  | brack<"⎨", "⎬"> -- ii9
-  | brack<"⎡", "⎤"> -- ii10
-  | brack<"⎣", "⎦"> -- ii11
-
-  brack<lb,rb> =
-    | lb itemsWithSpaces spaces rb spaces -- ii1a
-    | lb spaces rb spaces -- ii1b
-    | lb rb spaces -- ii1c
-
-  itemsWithSpaces = itemWithSpaces+
-  itemWithSpaces = spaces item
-
+  topLevel = item+
   item =
-    | bracketed
-    | runOfUninterestingChars
+    | pattern   -- pattern
+    | variable  -- variable
+    | bracketed -- bracketed
+    | runOfSpaces -- spaces
+    | runOfUninterestingChars      -- chars
 
+  runOfSpaces = space+
   runOfUninterestingChars = uninterestingChar+
-  uninterestingChar = ~literal ~space ~bracket any
-
-  innerItem =
-    | bracketed
-    | runOfUninterestingChars
-    
-  innerItems = spaces innerItemSpaces*
-  innerItemSpaces = innerItem spaces
-
+  uninterestingChar = ~pattern ~variable ~bracket ~space any
+  
+  variable = "\«" name "\»"
   bracket =
     | "(" | ")" | "{" | "}" | "[" | "]" | "<" | ">"
-    |  "❲" |  "❳" |  "«" | "»" | "⟨" |  "⟩" | "⟪" | "⟫"
+    |  "❲" |  "❳" |  "\«" | "\»" | "⟨" |  "⟩" | "⟪" | "⟫"
     | "⎨" | "⎬" | "⎡"| "⎤" | "⎣" | "⎦"
+  bracketed =
+    | brack<"(", ")"> -- br1
+    | brack<"{", "}"> -- br2
+    | brack<"[", "]"> -- br3
+    | brack<"<", ">"> -- br4
+    | brack<"❲", "❳"> -- br5
+    | brack<"⟨", "⟩"> -- br6
+    | brack<"⟪", "⟫"> -- br7
+    | brack<"⎨", "⎬"> -- br8
+    | brack<"⎡", "⎤"> -- br9
+    | brack<"⎣", "⎦"> -- br10
 
-
-  spitem = itemWithSpaces
-  spitemsp = itemWithSpaces spaces
-
-pattern = «firstPattern»
-
+  brack<lb,rb> = lb item+ rb
+  name = bracketedName | classicName
+  bracketedName = "❲" (~"❳" any)+ "❳"
+  classicName = nameFirst nameRest*
+  nameFirst = letter | "_"
+  nameRest = alnum | nameFirst
 ’
 
-  firstPattern [lq firstitem+ rq] = ‛«firstitem» ’
-  firstitem_variable [lq name rq] = ‛ spitemsp ’
+  firstPattern [lq firstitem+ rq] = ‛’
+  firstitem_variable [lq name rq] = ‛’
   firstitem_space [c] = ‛’
-  firstitem_characters [c+] = ‛ "«c»" ’
+  firstitem_character [c] = ‛’
   secondPattern [lq seconditem+ rq] = ‛’
   seconditem_variable [lq name rq] = ‛’
   seconditem_space [c] = ‛’
-  seconditem_characters [c+] = ‛’
+  seconditem_character [c] = ‛’
 
   name [nameFirst nameRest*] = ‛«nameFirst»«nameRest»’
   nameFirst [letter] = ‛«letter»’
