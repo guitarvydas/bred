@@ -4,9 +4,11 @@ bdir=./
 
 all: fab/fab firstToSecond
 
-dev: devconnection
+dev: devlang
 
-devo: manual
+dev1: devconnection
+
+dev0: manual
 
 manual:
 	# test that bred.ohm parses the spec
@@ -27,12 +29,15 @@ manual:
 	@echo
 	diff nestingFab.fab pattern.fab
 
+devlang:
+	./bred.bash message.bred lang.u0d .
+
 devconnection:
-	./bred.bash connection.bred connection.u0d >connection.0d
+	./bred.bash connection.bred connection.u0d . >connection.0d
 
 
 firstToSecond:
-	./bred.bash connection.bred connection.u0d >connection.0d
+	./bred.bash connection.bred connection.u0d . >connection.0d
 	cat connection.0d
 
 install: repos npmstuff

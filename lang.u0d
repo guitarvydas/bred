@@ -1,0 +1,5 @@
+#def procedure ❲clear outputs❳ {
+  #lang js (self) «
+    self.outputs = [];
+  »
+}
