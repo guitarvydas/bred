@@ -6,6 +6,10 @@ all: fab/fab firstToSecond
 
 dev:
 	@echo
+	(make devop)
+
+dev2:
+	@echo
 	(make devlang)
 	@echo
 	(make devconnection ; cat connection.0d)
@@ -32,6 +36,9 @@ manual:
 	@echo
 	@echo
 	diff nestingFab.fab pattern.fab
+
+devop:
+	./bred.bash message.bred op.u0d .
 
 devlang:
 	./bred.bash message.bred lang.u0d .
