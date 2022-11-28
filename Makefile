@@ -4,7 +4,11 @@ bdir=./
 
 all: fab/fab firstToSecond
 
-dev: devlang
+dev:
+	@echo
+	(make devlang)
+	@echo
+	(make devconnection ; cat connection.0d)
 
 dev1: devconnection
 
