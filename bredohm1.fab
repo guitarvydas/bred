@@ -34,7 +34,7 @@ NestingGrammar {
 
   runOfSpaces = space+
   runOfUninterestingChars = uninterestingChar+
-  uninterestingChar = ~pattern ~variable ~bracket ~space any
+  uninterestingChar = ~pattern ~variable ~space any
   
   variable = "\«" name "\»"
   bracket =
