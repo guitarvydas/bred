@@ -11,3 +11,4 @@
   ”
 }
 ⟪𝜌port 𝜌data š 𝜌message⟫
+func (x => { console.log ("hello"); });
