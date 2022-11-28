@@ -4,7 +4,9 @@ bdir=./
 
 all: fab/fab firstToSecond
 
-dev: manual
+dev: devconnection
+
+devo: manual
 
 manual:
 	# test that bred.ohm parses the spec
@@ -20,27 +22,18 @@ manual:
 	./fab/fab - Bred ${bdir}/bred.ohm ${bdir}/bredohm3.fab --support=support.js <message.bred >>pattern.ohm
 	# test fab generator - bredfab.fab creates pattern.fab
 	./fab/fab - Bred ${bdir}/bred.ohm ${bdir}/bredfab.fab <message.bred --support=support.js >pattern.fab
-	# #
-	# ./fab/fab - NestingGrammar pattern.ohm pattern.fab <shortcontainer.u0d >shortcontainer.0d
-	# #
-	# ./dev.bash message.bred shortcontainer.u0d >shortcontainer.00d
-	# cat shortcontainer.00d
-
-	# # ./dev.bash outputport.bred shortcontainer.00d >shortcontainer.000d
-	# # cat shortcontainer.000d
-
-	# # ./dev.bash outputport.bred outputport.u0d >outputport.0d
-	# # cat outputport.0d
 
 	@echo
 	@echo
 	diff nestingFab.fab pattern.fab
 
+devconnection:
+	./bred.bash connection.bred connection.u0d >connection.0d
+
 
 firstToSecond:
 	./bred.bash connection.bred connection.u0d >connection.0d
-	./bred.bash senderreceiver.bred connection2.u0d >connection2.0d
-	cat connection2.0d
+	cat connection.0d
 
 install: repos npmstuff
 
