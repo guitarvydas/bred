@@ -41,6 +41,7 @@ NestingGrammar {
     | "(" | ")" | "{" | "}" | "[" | "]" | "<" | ">"
     |  "❲" |  "❳" |  "\«" | "\»" | "⟨" |  "⟩" | "⟪" | "⟫"
     | "⎨" | "⎬" | "⎡"| "⎤" | "⎣" | "⎦"
+    | "“" |  "”"
   bracketed =
     | brack<"(", ")"> -- br1
     | brack<"{", "}"> -- br2
@@ -53,6 +54,7 @@ NestingGrammar {
     | brack<"⎡", "⎤"> -- br9
     | brack<"⎣", "⎦"> -- br10
     | brack<"\«", "\»"> -- br11
+    | brack<"“", "”"> -- br12
 
   brack<lb,rb> = lb item* rb
   name = bracketedName | classicName
