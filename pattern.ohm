@@ -33,13 +33,14 @@ NestingGrammar {
 
   runOfSpaces = space+
   runOfUninterestingChars = uninterestingChar+
-  uninterestingChar = ~pattern ~variable ~bracket ~space any
+  uninterestingChar = ~pattern ~variable ~space any
   
   variable = "«" name "»"
   bracket =
     | "(" | ")" | "{" | "}" | "[" | "]" | "<" | ">"
     |  "❲" |  "❳" |  "«" | "»" | "⟨" |  "⟩" | "⟪" | "⟫"
     | "⎨" | "⎬" | "⎡"| "⎤" | "⎣" | "⎦"
+    | "“" |  "”"
   bracketed =
     | brack<"(", ")"> -- br1
     | brack<"{", "}"> -- br2
@@ -51,8 +52,12 @@ NestingGrammar {
     | brack<"⎨", "⎬"> -- br8
     | brack<"⎡", "⎤"> -- br9
     | brack<"⎣", "⎦"> -- br10
+    | brack<"«", "»"> -- br11
+    | verbatim -- br12
 
-  brack<lb,rb> = lb item+ rb
+  verbatim = "“" (~"”" any)* "”"
+
+  brack<lb,rb> = lb item* rb
   name = bracketedName | classicName
   bracketedName = "❲" (~"❳" any)+ "❳"
   classicName = nameFirst nameRest*
