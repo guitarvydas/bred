@@ -54,7 +54,9 @@ NestingGrammar {
     | brack<"⎡", "⎤"> -- br9
     | brack<"⎣", "⎦"> -- br10
     | brack<"\«", "\»"> -- br11
-    | brack<"“", "”"> -- br12
+    | verbatim -- br12
+
+  verbatim = "“" (~"”" any)* "”"
 
   brack<lb,rb> = lb item* rb
   name = bracketedName | classicName
