@@ -1,1 +1,1 @@
-{rst}{uvw}
+{[rst]}{uvw}

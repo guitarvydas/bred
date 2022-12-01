@@ -4,18 +4,24 @@ bdir=./
 
 all: fab/fab transpile
 
-dev: dev1
-
-dev0:
-	./bred-generate.bash out spec0.bred . <src0.txt
-	@echo generated out.ohm and out.fab
+dev: dev00
 
 dev0a:
-	./bred-generate.bash out spec0.bred .
-	./bred-apply.bash    out            . <src0.txt
+	./bred-generate.bash pattern spec0.bred . <src0.txt
+	@ls -l pattern.*
 
 dev0b:
+	./bred-apply.bash    pattern            . <src0.txt
+
+dev0c:
+	./bred-generate.bash out spec0.bred .
+	./bred-apply.bash    pattern            . <src0.txt
+
+dev0:
 	./bred-transpile.bash spec0.bred . <src0.txt
+
+dev00:
+	./bred-transpile.bash spec0.bred . <src0a.txt
 
 dev1:
 	./bred-transpile.bash spec1.bred . <src1.txt

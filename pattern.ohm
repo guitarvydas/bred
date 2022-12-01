@@ -1,35 +1,16 @@
 
 NestingGrammar {
 
-// test: a b c
-// test: ( d e f )
-// test: a b c ( d e f )
-// test: a b c ( d e f ) g h i
-// test: ⟪◦o ϕ š m⟫
-// test: ⎨▫down (š ✕in) (❲leaf 1❳ ✕in)⎬
-// test: ⎨x (š y) (z w)⎬
-// test: a(d)
-//
-// test: ⎨in ⇓ ❲leaf 1❳ in⎬
-// test: a b c ⎨in ⇓ ❲leaf 1❳ in⎬ g h i
-//
-// test:  ⎨❲leaf 1❳ out ⇑ out⎬
-// test: ⎨❲leaf 1❳ ✕in ⇒ ❲leaf 2❳ ✕in⎬
-// test: ⎨✕in ⤻ out⎬
-//
-// test: ⎨✕in ⇓ ❲leaf 1❳ ✕in⎬
-// test:  ⎨❲leaf 1❳ ▫out ⇑ ▫out⎬
-// test: ⎨❲leaf 1❳ ▫out ⇒ ❲leaf 2❳ ✕in⎬
-// test: ⎨✕in ⤻ ▫out⎬
-//
-
   topLevel = item+
   item =
     | pattern   -- pattern
     | variable  -- variable
-    | bracketed -- bracketed
-    | runOfSpaces -- spaces
-    | runOfUninterestingChars      -- chars
+    | container -- container
+    | leaf      -- leaf
+    | space     -- whitespace
+
+  leaf = space* uninterestingChar+ space* uninterestingChar*
+  container = bracketed
 
   runOfSpaces = space+
   runOfUninterestingChars = uninterestingChar+
@@ -57,13 +38,13 @@ NestingGrammar {
 
   verbatim = "“" (~"”" any)* "”"
 
-  brack<lb,rb> = lb item* rb
+  brack<lb,rb> = lb item rb
   name = bracketedName | classicName
   bracketedName = "❲" (~"❳" any)+ "❳"
   classicName = nameFirst nameRest*
   nameFirst = letter | "_"
   nameRest = alnum | nameFirst
 
-  pattern = "{" item "}" "{" item "}" 
-  literal = | "{" | "}" | "{" | "}" | bracket
+  pattern = "{" item "}" 
+  literal = | "{" | "}" | bracket
 }
