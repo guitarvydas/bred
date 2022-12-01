@@ -1,2 +1,2 @@
-⎨▫down (š ✕in) (❲leaf 1❳ ✕in)⎬
-
+error in .fmt specification<br><br>Found errors in the action dictionary of the '_fmt' operation:
+- Semantic action 'variable' has the wrong arity: expected 1, got 3

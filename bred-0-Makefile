@@ -2,20 +2,23 @@
 pattern=pattern
 bdir=./
 
-all: fab/fab transpile
+all: fab/fab firstToSecond
 
-dev: dev0a
+dev: dev1 dev2 dev3
 
-dev0:
-	./bred-generate.bash out spec0.bred . <src0.txt
-	@echo generated out.ohm and out.fab
+dev3:
+	@echo
+	(make devop)
 
-dev0a:
-	./bred-generate.bash out spec0.bred .
-	./bred-apply.bash    out            . <src0.txt
+dev2:
+	@echo
+	(make devlang)
+	@echo
+	(make devconnection ; cat connection.0d)
 
+dev1: devconnection
 
-devmanual: manual
+dev0: manual
 
 manual:
 	# test that bred.ohm parses the spec
@@ -36,6 +39,19 @@ manual:
 	@echo
 	diff nestingFab.fab pattern.fab
 
+devop:
+	./bred.bash message.bred op.u0d .
+
+devlang:
+	./bred.bash message.bred lang.u0d .
+
+devconnection:
+	./bred.bash connection.bred connection.u0d . >connection.0d
+
+
+firstToSecond:
+	./bred.bash connection.bred connection.u0d . >connection.0d
+	cat connection.0d
 
 install: repos npmstuff
 
