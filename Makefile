@@ -4,7 +4,7 @@ bdir=./
 
 all: fab/fab transpile
 
-dev: dev00
+dev: dev1
 
 dev0a:
 	./bred-generate.bash pattern spec0.bred . <src0.txt
