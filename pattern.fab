@@ -17,7 +17,7 @@ NestingGrammar {
 
   bracket [c] = ‛«c»’
   // bracketed [x] ... handled implicitly by Ohm-JS
-  brack [lb item rb] = ‛«lb»«item»«rb»’
+  brack [lb item+ rb] = ‛«lb»«item»«rb»’
   verbatim [lq cs* rq] = ‛«lq»«cs»«rq»’
   name [n] = ‛«n»’
   bracketedName [lb cs+ rb] = ‛❲«cs»❳’
@@ -26,6 +26,6 @@ NestingGrammar {
   nameRest [c] = ‛«c»’
 
   literal [c] = ‛«c»’
-  pattern [_k1 a _k2 _k3 b _k4 ] = ‛«b»«a»’
+  pattern [_k1 p _s2 d _s3 s _s4 m _k5 ] = ‛⟨Message «p» «d» «s» «m»⟩’
 }
 

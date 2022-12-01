@@ -36,13 +36,13 @@ NestingGrammar {
 
   verbatim = "“" (~"”" any)* "”"
 
-  brack<lb,rb> = lb item rb
+  brack<lb,rb> = lb item+ rb
   name = bracketedName | classicName
   bracketedName = "❲" (~"❳" any)+ "❳"
   classicName = nameFirst nameRest*
   nameFirst = letter | "_"
   nameRest = alnum | nameFirst
 
-  pattern = "{" item "}" "{" item "}" 
-  literal = | "{" | "}" | "{" | "}" | bracket
+  pattern = "⟪" item " " item " " item " " item "⟫" 
+  literal = | "⟪" | " " | " " | " " | "⟫" | bracket
 }

@@ -37,7 +37,7 @@ NestingGrammar {
 
   verbatim = "“" (~"”" any)* "”"
 
-  brack<lb,rb> = lb item rb
+  brack<lb,rb> = lb item+ rb
   name = bracketedName | classicName
   bracketedName = "❲" (~"❳" any)+ "❳"
   classicName = nameFirst nameRest*
