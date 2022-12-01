@@ -16,7 +16,7 @@ NestingGrammar {
   uninterestingChar = ~pattern ~bracket ~space any
   
   bracket =
-    | "(" | ")" | "{" | "}" | "[" | "]" | "<" | ">"
+    | "(" | ")" | "{" | "}" | "[" | "]" | lt | gt
     |  "❲" |  "❳" |  "«" | "»" | "⟨" |  "⟩" | "⟪" | "⟫"
     | "⎨" | "⎬" | "⎡"| "⎤" | "⎣" | "⎦"
     | "“" |  "”"
@@ -24,7 +24,7 @@ NestingGrammar {
     | brack<"(", ")"> -- br1
     | brack<"{", "}"> -- br2
     | brack<"[", "]"> -- br3
-    | brack<"<", ">"> -- br4
+    | brack<lt, gt> -- br4
     | brack<"❲", "❳"> -- br5
     | brack<"⟨", "⟩"> -- br6
     | brack<"⟪", "⟫"> -- br7
@@ -42,6 +42,11 @@ NestingGrammar {
   classicName = nameFirst nameRest*
   nameFirst = letter | "_"
   nameRest = alnum | nameFirst
+
+  lt = ~angleprefix "<" ~anglesuffix
+  gt = ~angleprefix ">" ~anglesuffix
+  angleprefix = "=" | "<" | ">"
+  anglesuffix = "=" | "<" | ">"
 
   pattern = "⟪" item " " item " " item " " item "⟫" 
   literal = | "⟪" | " " | " " | " " | "⟫" | bracket

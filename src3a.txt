@@ -1,2 +1,5 @@
 #def tag ⟨#Direction down up across ❲pass through❳⟩
     self.outputs = [];
+{    
+    ✦armed ⇒ š /* armed => ready to run function, completed => function already executed once */
+}
