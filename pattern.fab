@@ -25,6 +25,6 @@ NestingGrammar {
   nameRest [c] = ‛«c»’
 
   literal [c] = ‛«c»’
-  pattern [_k1 a _k2 ] = ‛this is a test «a» test a is this’
+  pattern [_k1 a _k2 _k3 b _k4 ] = ‛«b»«a» var 1 = /«a»/ var 2 = /«b»/’
 }
 

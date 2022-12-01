@@ -4,7 +4,7 @@ bdir=./
 
 all: fab/fab transpile
 
-dev: dev0b
+dev: dev1
 
 dev0:
 	./bred-generate.bash out spec0.bred . <src0.txt
@@ -16,6 +16,10 @@ dev0a:
 
 dev0b:
 	./bred-transpile.bash spec0.bred . <src0.txt
+
+dev1:
+	./bred-transpile.bash spec1.bred . <src1.txt
+
 
 devmanual: manual
 
