@@ -5,7 +5,6 @@ NestingGrammar {
   topLevel [items+] = \‛\«items\»\’
   
   item_pattern [p] = \‛\«p\»\’
-  item_variable [v] = \‛\«v\»\’
   item_container [c] = \‛\«c\»\’
   item_leaf [L] = \‛\«L\»\’
   item_whitespace [s] = \‛\«s\»\’
@@ -17,7 +16,6 @@ NestingGrammar {
   runOfUninterestingChars [cs+] = \‛\«cs\»\’
   uninterestingChar [c] = \‛\«c\»\’
 
-  variable [name] = \‛\«name\»\’
   bracket [c] = \‛\«c\»\’
   // bracketed [x] ... handled implicitly by Ohm-JS
   brack [lb item rb] = \‛\«lb\»\«item\»\«rb\»\’

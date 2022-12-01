@@ -5,7 +5,6 @@ NestingGrammar {
   topLevel = item+
   item =
     | pattern   -- pattern
-    | variable  -- variable
     | container -- container
     | leaf      -- leaf
     | space     -- whitespace
@@ -15,9 +14,8 @@ NestingGrammar {
 
   runOfSpaces = space+
   runOfUninterestingChars = uninterestingChar+
-  uninterestingChar = ~pattern ~variable ~space any
+  uninterestingChar = ~pattern ~bracket ~space any
   
-  variable = name
   bracket =
     | "(" | ")" | "{" | "}" | "[" | "]" | "<" | ">"
     |  "❲" |  "❳" |  "\«" | "\»" | "⟨" |  "⟩" | "⟪" | "⟫"
