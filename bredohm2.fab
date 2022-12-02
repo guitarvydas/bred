@@ -4,7 +4,7 @@ Bred {
 
   firstPattern [lq firstitem+ rq] = ‛«firstitem»’
 
-  firstitem_variable [lq name rq] = ‛item ’
+  firstitem_variable [lq name rq] = ‛iteminpattern ’
   firstitem_space [c] = ‛" " ’
   firstitem_character [c] = ‛"«c»" ’
   secondPattern [lq seconditem+ rq] = ‛’

@@ -9,6 +9,9 @@ NestingGrammar {
   item_leaf [L] = \‛\«L\»\’
   item_whitespace [s] = \‛\«s\»\’
 
+  iteminpattern_container [c] = \‛\«c\»\’
+  iteminpattern_leaf [uc+] = \‛\«uc\»\’
+
   leaf [sp1* c1+ sp2* c2*] = ‛\«sp1»\«c1»\«sp2»\«c2»\’
   container [b] = \‛\«b\»\’
 

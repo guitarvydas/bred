@@ -5,7 +5,7 @@ bdir=./
 all: fab/fab transpile
 
 # current issue: src2 contains a space in first item - 
-dev: dev3a
+dev: dev4
 
 dev0a:
 	./bred-generate.bash pattern spec0.bred . <src0.txt
@@ -38,6 +38,9 @@ dev2:
 
 dev3a:
 	./bred-transpile.bash message.bred . <src3a.txt
+
+dev4:
+	./bred-transpile.bash message1.bred . <src4.txt
 
 
 devmanual: manual

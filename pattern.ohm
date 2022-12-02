@@ -8,6 +8,10 @@ NestingGrammar {
     | leaf      -- leaf
     | space     -- whitespace
 
+  iteminpattern =
+    | container -- container
+    | uninterestingChar+      -- leaf
+
   leaf = space* uninterestingChar+ space* uninterestingChar*
   container = bracketed
 
@@ -48,6 +52,6 @@ NestingGrammar {
   angleprefix = "=" | "<" | ">"
   anglesuffix = "=" | "<" | ">"
 
-  pattern = "⟪" item " " item " " item " " item "⟫" 
-  literal = | "⟪" | " " | " " | " " | "⟫" | bracket
+  pattern = "⟪" iteminpattern " " iteminpattern "⟫" 
+  literal = | "⟪" | " " | "⟫" | bracket
 }

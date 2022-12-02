@@ -9,6 +9,10 @@ NestingGrammar {
     | leaf      -- leaf
     | space     -- whitespace
 
+  iteminpattern =
+    | container -- container
+    | uninterestingChar+      -- leaf
+
   leaf = space* uninterestingChar+ space* uninterestingChar*
   container = bracketed
 
