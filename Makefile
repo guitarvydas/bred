@@ -39,8 +39,11 @@ dev2:
 dev3a:
 	./bred-transpile.bash message.bred . <src3a.txt
 
+dev4a:
+	./bred-transpile.bash message1.bred . <src4a.txt
+
 dev4:
-	./bred-transpile.bash message1.bred . <src4.txt
+	./bred-transpile.bash message.bred . <src4.txt
 
 
 devmanual: manual
