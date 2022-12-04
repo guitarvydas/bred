@@ -13,6 +13,8 @@ NestingGrammar {
     | container -- container
     | uninterestingChar+      -- leaf
 
+  dontcare = item+
+  
   leaf = space* uninterestingChar+ space* uninterestingChar*
   container = bracketed
 
@@ -54,6 +56,7 @@ NestingGrammar {
 
   firstPattern [lq firstitem+ rq] = ‛’
   firstitem_variable [lq name rq] = ‛’
+  firstitem_dontcare [c] = ‛’
   firstitem_space [c] = ‛’
   firstitem_character [c] = ‛’
   secondPattern [lq seconditem+ rq] = ‛’

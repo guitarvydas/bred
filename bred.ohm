@@ -7,6 +7,7 @@ Bred {
   firstPattern = "‛" firstitem+ "’"
   firstitem =
     | "«" name "»" -- variable
+    | "_" -- dontcare
     | space -- space
     | (~"«" ~"»" ~"‛" ~"’" ~space any) -- character
   secondPattern = "‛" seconditem+ "’"
