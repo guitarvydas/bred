@@ -16,8 +16,6 @@ NestingGrammar {
   leaf = space* uninterestingChar+ space* uninterestingChar*
   container = bracketed
 
-  runOfSpaces = space+
-  runOfUninterestingChars = uninterestingChar+
   uninterestingChar = ~pattern ~bracket ~space any
   
   bracket =
