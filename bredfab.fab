@@ -34,6 +34,7 @@ NestingGrammar {
 
   firstPattern [lq firstitem+ rq] = ‛«firstitem»’
   firstitem_variable [lq name rq] = ‛«name» ’
+  firstitem_dontcare [c] = ‛_«gensym ("x")» ’
   firstitem_space [c] = ‛_«gensym ("s")» ’
   firstitem_character [c] = ‛_«gensym ("k")» ’
   secondPattern [lq seconditem+ rq] = ‛«lq»«seconditem»«rq»’
