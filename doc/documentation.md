@@ -61,7 +61,7 @@ See the section below.
 - Ohm-JS - a better PEG, see also Ohm-Editor, which is like a REPL for language syntax design
 - PEG - theory of code generation for building pattern-matching code ; ostensibly looks similar to Language Theory tools and syntaxes like BNF, but, instead of defining *languages*, PEG defines *parser generators*, and, therefore, can match patterns that Language Theory-based parsers cannot match.
 
-# Contributors, Maintainers
+# Contributors, Maintainers, Collaborators
 Help maintaining this tool would be appreciated.
 
 Experience considered a detriment.

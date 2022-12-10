@@ -20,7 +20,7 @@ is converted into
 
 `⟨MessageWithDebug ⟨MessageWithDebug p val x y⟩ v w⟩`
 
-See doc/README.md for more detail.
+See doc/documentation.md. more detail.
 
 
 notes to self
