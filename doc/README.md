@@ -20,4 +20,4 @@ is converted into
 
 `⟨MessageWithDebug ⟨MessageWithDebug p val x y⟩ v w⟩`
 
-[[pattern format]]
+[[deprecatedpatternspecification]]

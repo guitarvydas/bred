@@ -1,8 +1,10 @@
+# Pattern Specification Syntax
+
 A pattern contains two *strings*, delimited by matching left and right quotes, `‛` and `’` respectively.
 
-The *bred* tool creates a script that converts the first string into the second string.  
+The *bred* tool generates code - a script - that converts the first string into the second string.  
 
-The script consists of two (2) generated files and some boilerplate code.  The first generated file is an *Ohm-JS* compatible grammar and the second generated file is a *Fab* compatible code fabrication script.  The scripts and boilerplate are run by the *fab* tool to convert a given text file.
+The generated code consists of some (3 at the moment of writing) generated files and some boilerplate code.  The first generated file is an *Ohm-JS* compatible grammar and the second generated file is a *Fab* compatible code fabrication script.  The generated code is combined with some boilerplate code and the result is run by the *fab* tool to convert the given input text file.
 
 Parts of the file that don't match the first string are untouched.  The editor matches and replaces only the matching text in the input file.
 
@@ -12,7 +14,7 @@ A *string* can contain:
 
 Literal characters form literal parts of the input and output patterns and variable names are used to signify match captures.
 
-Variable names are identifiers enclosed in brackets `«` and `»`.  The rules for forming odentifiers are similar to the rules for forming variable names in most languages, i.e. a letter followed by zero or more alpha-nums (underscores not allowed).
+Variable names are identifiers enclosed in brackets `«` and `»`.  The rules for forming identifiers are similar to the rules for forming variable names in most languages, i.e. a letter followed by zero or more alpha-nums (underscores not allowed).
 
 For example, a *bred* pattern that converts "message" syntax into "declarative type" syntax is:
 

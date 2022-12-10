@@ -13,7 +13,43 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "doc/Synonym.md",
+                "file": "doc/README.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "8e325f313f371ce4",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "doc/deprecatedpatternspecification.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "169a3f548cdd770a",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "doc/patternspecification.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "a2a1c1b0069b2826",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "doc/specificationstrings.md",
                 "mode": "source",
                 "source": false
               }
@@ -25,14 +61,14 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "doc/pattern format.md",
+                "file": "doc/deprecatedpatternspecification.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -98,7 +134,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "doc/pattern format.md",
+                "file": "doc/specificationstrings.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -115,7 +151,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "doc/pattern format.md",
+                "file": "doc/specificationstrings.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -138,7 +174,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "doc/pattern format.md"
+                "file": "doc/specificationstrings.md"
               }
             }
           }
@@ -149,13 +185,17 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "3d85e8a1d543b5aa",
+  "active": "a2a1c1b0069b2826",
   "lastOpenFiles": [
-    "doc/message-synonym.md",
-    "doc/pattern format.md",
+    "doc/documentation.md",
+    "doc/recursivematching.md",
+    "doc/specificationstrings.md",
+    "doc/patternspecification.md",
+    "doc/deprecatedpatternspecification.md",
+    "doc/messagesynonym.md",
+    "doc/Message.md",
     "doc/README.md",
     "doc/Synonym.md",
-    "README.md",
-    "doc/Message.md"
+    "fab/README.md"
   ]
 }
