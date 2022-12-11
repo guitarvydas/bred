@@ -1,6 +1,6 @@
 # BRED - Text manipulation based on matching brackets
 
-![[bred.png]]
+![bred.png](bred.png)
 
 BRED is a tool that helps in re-formatting text.
 
