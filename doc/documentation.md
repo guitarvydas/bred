@@ -24,7 +24,7 @@ A BRED specification, a .bred file, contains two strings:
 1. a pattern to be matched
 2. the replacement
 
-Strings in the specification are delimited by the Unicode characters `` and ``.
+Strings in the specification are delimited by the Unicode characters `‛` and `’`.
 
 A wider range of users can use BRED without being faced with learning a wall of complicated details and options. 
 
@@ -61,7 +61,7 @@ See the section below.
 - The FAB tool and the `transpile()` library.  For more general pattern matching based on PEG grammars and capture replacement based on an SCN (a nano-DSL).
 - The FMT-JS library.  Pattern-matching based on Ohm-JS (PEG-like) and an SCN for fabrication, in library form for JavaScript.
 - Ohm-JS - a better PEG, see also Ohm-Editor, which is like a REPL for language syntax design
-- PEG - theory of code generation for building pattern-matching code ; ostensibly looks similar to Language Theory tools and syntaxes like BNF, but, instead of defining *languages*, PEG defines *parser generators*, and, therefore, can match patterns that Language Theory-based parsers cannot match.
+- PEG - theory of code generation for building pattern-matching code ; ostensibly, PEG looks similar to Language Theory tools and syntaxes like BNF, but, instead of defining *languages*, PEG defines *parser generators*, and, therefore, can match patterns that Language Theory-based parsers cannot match.
 
 # Contributors, Maintainers, Collaborators
 Help maintaining this tool would be appreciated.

@@ -13,4 +13,4 @@ Inner bracketed items are replaced by their fabrications in a depth-first manner
 
 Items bracketed by   `“ ... ”` are not parsed recursively and are treated as *verbatim* characters.
 
-See the Brackets section for a list of recognized brackets
+See the Brackets section for a list of recognized brackets/

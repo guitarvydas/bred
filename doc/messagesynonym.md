@@ -1,4 +1,4 @@
-# Syntax for Messages
+# Example: Syntax for Messages
 
 A message ostensibly consists of 2 items
 1. a port identifier
@@ -6,7 +6,7 @@ A message ostensibly consists of 2 items
 
 In addition to this, to make debugging messages easier, we add 2 fields
 3. come-from ("origin")
-4. trail (all of the messages, in sequence, that caused this message)
+4. trail (the message that caused this message (note that this is recursive, the causing message contains a trail, itself, and so on all the way to the beginning)
 
 We would like to use a shorthand syntax for messages when writing and reading code.  On the other hand, a message-sending engine requires more information which can be embodied in a Declarative Type that contains the type-name in more explicit form.
 
@@ -14,9 +14,9 @@ The type-name looks like *noise* to human readers and we would like to elide thi
 
 BRED can perform such a conversion to a block of text.  BRED only rewrites pieces of text that are in the form of human-readable message syntax.  BRED rewrites the human-readable text to its Declarative Type format.
 
-The table below shows the human-readable form ("pattern") and the machine-readable form ("synonym").
+The table below shows the human-readable form and the machine-readable form, a synonym.
 
-| pattern | synonym |
+| human-readable | synonym |
 | --------| ------- |
 | ⟪«port» «data» «origin» «trail»⟫ | ⟨Message «port» «data» «origin» «trail»⟩  |
 
@@ -35,9 +35,9 @@ The BRED specfication for matching and fabricating messages is
 The first string `‛⟪«p» «d» «s» «m»⟫’` says to find - recursively - all runs of text that
 1. begin with a "message" bracket `⟪`
 2. have four items separated by single spaces, called *p*, *d*, *s*, and *m* respectively
-3. end with a "message end" brack `⟫`
+3. end with a "message end" bracket `⟫`
 
-Each sub-match is scurried away into its corresponding match variable called *p*, *d*, *s*, and *m* respectively and made available in the fabrication specification.
+Each sub-match is scurried away into its corresponding match variable, called *p*, *d*, *s*, and *m* respectively, and made available in the fabrication specification.
 
 The second string `‛⟨Message «p» «d» «s» «m»⟩’` specifies that the newly-fabricated string is to be composed of:
 1. a Declarative Type bracket `⟨`

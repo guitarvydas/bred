@@ -13,43 +13,19 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "README.md",
+                "file": "doc/Synonym.md",
                 "mode": "source",
                 "source": false
               }
             }
           },
           {
-            "id": "8e325f313f371ce4",
+            "id": "922f8b475c1c2fa1",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "doc/deprecatedpatternspecification.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "169a3f548cdd770a",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "doc/patternspecification.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "3d85e8a1d543b5aa",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "doc/deprecatedpatternspecification.md",
+                "file": "doc/warts.md",
                 "mode": "source",
                 "source": false
               }
@@ -121,7 +97,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "README.md",
+                "file": "doc/Synonym.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -138,7 +114,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "README.md",
+                "file": "doc/Synonym.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -161,7 +137,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "README.md"
+                "file": "doc/Synonym.md"
               }
             }
           }
@@ -174,15 +150,15 @@
   },
   "active": "af7d9bb3a66790c2",
   "lastOpenFiles": [
-    "doc/README.md",
-    "doc/patternspecification.md",
-    "doc/recursivematching.md",
-    "node_modules/ohm-js/README.md",
-    "README.md",
     "doc/DOCUMENTATION.md",
-    "doc/Message.md",
     "doc/messagesynonym.md",
+    "doc/fabricationsyntax.md",
+    "doc/specificationstrings.md",
+    "doc/patternspecification.md",
+    "doc/warts.md",
     "doc/brackets.md",
-    "fab/README.md"
+    "doc/recursivematching.md",
+    "README.md",
+    "doc/README.md"
   ]
 }
