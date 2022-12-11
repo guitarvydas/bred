@@ -11,8 +11,12 @@
             "id": "af7d9bb3a66790c2",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "README.md",
+                "mode": "source",
+                "source": false
+              }
             }
           },
           {
@@ -93,6 +97,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "README.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -109,6 +114,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "README.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -130,7 +136,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "README.md"
+              }
             }
           }
         ]
@@ -140,8 +148,9 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "b3be540d2550cbae",
+  "active": "af7d9bb3a66790c2",
   "lastOpenFiles": [
+    "doc/Message.md",
     "doc/deprecatedpatternspecification.md",
     "doc/Synonym.md",
     "doc/DOCUMENTATION.md",
@@ -150,7 +159,6 @@
     "doc/specificationstrings.md",
     "doc/patternspecification.md",
     "doc/warts.md",
-    "doc/brackets.md",
-    "doc/recursivematching.md"
+    "doc/brackets.md"
   ]
 }
