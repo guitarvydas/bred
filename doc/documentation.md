@@ -39,7 +39,7 @@ Fabrication is specified using a new SCN syntax - a nano-DSL for formatting matc
 See the section below.
 
 # Recursive Pattern Matching of Bracketed Items
-[[recursivematching]]
+[recursivematching](recursivematching.md)
 
 # Brackets
 [[brackets]]
