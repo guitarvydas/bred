@@ -1,30 +1,9 @@
-Batch Recursive EDitor
+# BRED - Text manipulation based on matching brackets
 
-Like REGEX, except that it pattern matches patterns enclosed in brackets, recursively.
+![[bred.png]]
 
-The running example is mean to convert:
+BRED is a tool that helps in re-formatting text.
 
-`⟪p val x y⟫`
+BRED captures bits of text and allows users to fabricate new text based on the captured text.
 
-into 
-
-`⟨MessageWithDebug p val x y⟩`
-
-where any of the args (p, val, x, y) can, recursively, be more `⟪p val x y⟫` patterns.
-
-So, something like
-
-`⟪p ⟪p val x y⟫ v w⟫`
-
-is converted into
-
-`⟨MessageWithDebug ⟨MessageWithDebug p val x y⟩ v w⟩`
-
-See doc/documentation.md. more detail.
-
-
-notes to self
-  bracket =
-    | "(" | ")" | "{" | "}" | "[" | "]" | "<" | ">"
-    |  "❲" |  "❳" |  "«" | "»" | "⟨" |  "⟩" | "⟪" | "⟫"
-
+See doc/DOCUMENTATION.md for further details.
