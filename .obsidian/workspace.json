@@ -187,15 +187,15 @@
   },
   "active": "a2a1c1b0069b2826",
   "lastOpenFiles": [
+    "doc/Message.md",
+    "doc/documentation.md",
+    "doc/README.md",
+    "README.md",
+    "doc/messagesynonym.md",
     "doc/recursivematching.md",
     "doc/brackets.md",
-    "doc/documentation.md",
-    "README.md",
     "fab/README.md",
     "doc/specificationstrings.md",
-    "doc/patternspecification.md",
-    "doc/deprecatedpatternspecification.md",
-    "doc/messagesynonym.md",
-    "doc/Message.md"
+    "doc/patternspecification.md"
   ]
 }

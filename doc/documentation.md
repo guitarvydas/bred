@@ -1,5 +1,7 @@
 # BRED - Text manipulation based on matching brackets
 
+![[bred.png]]
+
 BRED is a tool that helps in re-formatting text.
 
 BRED captures bits of text and allows users to fabricate new text based on the captured text.
@@ -56,7 +58,7 @@ See the section below.
 [[messagesynonym]]
 # See Also
 - REGEX capabilities of languages like JavaScript, Python, etc. and command-line tools such as *awk* and *sed* to complement the use of BRED in forming edit chains. 
-- The FAB tool.  For more general pattern matching based on PEG grammars and capture replacment based on an SCN (a nano-DSL).
+- The FAB tool and the `transpile()` library.  For more general pattern matching based on PEG grammars and capture replacement based on an SCN (a nano-DSL).
 - The FMT-JS library.  Pattern-matching based on Ohm-JS (PEG-like) and an SCN for fabrication, in library form for JavaScript.
 - Ohm-JS - a better PEG, see also Ohm-Editor, which is like a REPL for language syntax design
 - PEG - theory of code generation for building pattern-matching code ; ostensibly looks similar to Language Theory tools and syntaxes like BNF, but, instead of defining *languages*, PEG defines *parser generators*, and, therefore, can match patterns that Language Theory-based parsers cannot match.
@@ -67,8 +69,3 @@ Help maintaining this tool would be appreciated.
 Experience considered a detriment.
 
 
-
-- pattern matching
-	- recursive
-- fabrication
--
