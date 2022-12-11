@@ -150,15 +150,15 @@
   },
   "active": "af7d9bb3a66790c2",
   "lastOpenFiles": [
-    "README.md",
+    "doc/recursivematching.md",
     "doc/documentation.md",
+    "README.pandoc.md",
+    "README.md",
     "doc/Message.md",
     "doc/deprecatedpatternspecification.md",
     "doc/Synonym.md",
     "doc/messagesynonym.md",
     "doc/fabricationsyntax.md",
-    "doc/specificationstrings.md",
-    "doc/patternspecification.md",
-    "doc/warts.md"
+    "doc/specificationstrings.md"
   ]
 }

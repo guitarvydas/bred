@@ -1,6 +1,6 @@
 # BRED - Text manipulation based on matching brackets
 
-![bred.png](bred.png)
+![[bred.png]]
 
 BRED is a tool that helps in re-formatting text.
 
@@ -39,7 +39,8 @@ Fabrication is specified using a new SCN syntax - a nano-DSL for formatting matc
 See the section below.
 
 # Recursive Pattern Matching of Bracketed Items
-![recursivematching](recursivematching.md)
+[[recursivematching]]
+https://github.com/guitarvydas/bred/blob/dev/doc/recursivematching.md
 
 # Brackets
 [[brackets]]
