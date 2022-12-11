@@ -1,5 +1,5 @@
 # BRED - Text manipulation based on matching brackets
-![bred](doc/bred.png)
+![bred](./doc/bred.png)
 
 ![[bred.png]]
 
