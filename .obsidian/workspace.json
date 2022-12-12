@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "README.md",
+                "file": "doc/documentation.md",
                 "mode": "source",
                 "source": false
               }
@@ -93,7 +93,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "README.md",
+                "file": "doc/documentation.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -110,7 +110,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "README.md",
+                "file": "doc/documentation.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -133,7 +133,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "README.md"
+                "file": "doc/documentation.md"
               }
             }
           }
@@ -146,6 +146,7 @@
   },
   "active": "af7d9bb3a66790c2",
   "lastOpenFiles": [
+    "README.md",
     "doc/documentation.md",
     "doc/bred.png",
     "doc/warts.md",
@@ -154,7 +155,6 @@
     "doc/mov/Screen Recording 2022-11-14 at 4.15.20 PM.mov",
     "doc/brackets.md",
     "doc/specificationstrings.md",
-    "doc/patternspecification.md",
-    "doc/fabricationsyntax.md"
+    "doc/patternspecification.md"
   ]
 }
