@@ -23,12 +23,8 @@
             "id": "922f8b475c1c2fa1",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "doc/warts.md",
-                "mode": "source",
-                "source": false
-              }
+              "type": "empty",
+              "state": {}
             }
           }
         ]
@@ -150,15 +146,15 @@
   },
   "active": "af7d9bb3a66790c2",
   "lastOpenFiles": [
-    "doc/recursivematching.md",
+    "doc/bred.png",
     "doc/documentation.md",
-    "README.pandoc.md",
-    "README.md",
-    "doc/Message.md",
-    "doc/deprecatedpatternspecification.md",
-    "doc/Synonym.md",
-    "doc/messagesynonym.md",
-    "doc/fabricationsyntax.md",
-    "doc/specificationstrings.md"
+    "doc/warts.md",
+    "doc/recursivematching.md",
+    "doc/mov/message example Screen Recording 2022-11-14 at 4.21.26 PM.mov",
+    "doc/mov/Screen Recording 2022-11-14 at 4.15.20 PM.mov",
+    "doc/brackets.md",
+    "doc/specificationstrings.md",
+    "doc/patternspecification.md",
+    "doc/fabricationsyntax.md"
   ]
 }
