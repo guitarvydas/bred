@@ -1,7 +1,5 @@
 #!/bin/bash
 ## usage: ./bred-transpile.bash message.bred breddir <src
-set -x
-echo bred-transpile.bash
 
 #synonyms
 
