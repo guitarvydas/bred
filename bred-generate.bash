@@ -1,6 +1,4 @@
 #!/bin/bash
-set -x
-echo bred-generate.bash
 ## usage: ./bred-generate.bash fname message.bred breddir
 
 # synonyms

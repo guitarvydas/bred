@@ -1,7 +1,5 @@
 #!/bin/bash
 ## usage: ./bred.bash message.bred breddir <src
-set -x
-echo bred.bash
 spec=$1
 breddir=$2
 ${breddir}/bred-transpile.bash ${spec} ${breddir}
