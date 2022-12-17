@@ -10,7 +10,7 @@ Bred {
     | "_" -- dontcare
     | space -- space
     | (~"«" ~"»" ~"‛" ~"’" ~space any) -- character
-  secondPattern = "‛" seconditem+ "’"
+  secondPattern = "‛" seconditem* "’"
   seconditem =
     | "«" name "»" -- variable
     | space -- space
