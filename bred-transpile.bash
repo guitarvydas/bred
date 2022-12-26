@@ -15,3 +15,5 @@ bdir=$2
 ${bdir}/bred-generate.bash ${fname} ${spec} ${bdir}
 # apply matcher/replacer to source
 ${bdir}/bred-apply.bash ${fname} ${bdir}
+
+rm -f ${fname}.ohm ${fname}.fab
