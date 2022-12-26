@@ -4,10 +4,10 @@
 #synonyms
 
 # when released...
-#pattern=pattern_${RANDOM}
+pattern=pattern_${RANDOM}
 
 # for now, during bootstrap
-fname=pattern
+fname=${pattern}
 spec=$1
 bdir=$2
 
