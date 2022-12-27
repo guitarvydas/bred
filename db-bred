@@ -1,0 +1,7 @@
+#!/bin/bash
+## usage: ./db-bred.bash message.bred breddir <src
+## this version is for bootstrap debug only
+
+spec=$1
+breddir=$2
+${breddir}/db-bred-transpile.bash ${spec} ${breddir}
