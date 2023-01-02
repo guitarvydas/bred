@@ -13,8 +13,19 @@ pattern=pattern_${RANDOM}
 fname=${pattern}
 
 # compile (generate) matcher/replacer
-${bdir}/bred-generate.bash ${fname} ${spec} ${bdir}
+support=--support=${bdir}/support.js
+
+#${bdir}/bred-generate.bash ${fname} ${spec} ${bdir}
+# generate .ohm file
+${bdir}/fab/fab - Bred ${bdir}/bred.ohm ${bdir}/bredohm1.fab           <${spec}  >${fname}.ohm
+${bdir}/fab/fab - Bred ${bdir}/bred.ohm ${bdir}/bredohm2.fab           <${spec} >>${fname}.ohm
+${bdir}/fab/fab - Bred ${bdir}/bred.ohm ${bdir}/bredohm3.fab           <${spec} >>${fname}.ohm
+# generate .fab file
+${bdir}/fab/fab - Bred ${bdir}/bred.ohm ${bdir}/bredfab.fab ${support} <${spec} >${fname}.fab
+
 # apply matcher/replacer to source
-${bdir}/bred-apply.bash ${fname} ${bdir}
+#${bdir}/bred-apply.bash ${fname} ${bdir}
+# run the nano-transpiler
+${bdir}/fab/fab - NestingGrammar ${fname}.ohm ${fname}.fab
 
 rm -f ${fname}.ohm ${fname}.fab
