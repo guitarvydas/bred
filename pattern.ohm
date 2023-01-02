@@ -4,6 +4,7 @@ NestingGrammar {
   topLevel = item+
   item =
     | sscomment
+    | slashstarcomment
     | sqstring
     | dqstring
     | bqstring
@@ -71,6 +72,10 @@ NestingGrammar {
 
       slashslash = "//"
       sscomment = slashslash (~nl any)* nl
+
+      slashstar = "/*"
+      starslash = "*/"
+      slashstarcomment = slashstar (~starslash any)* starslash
 
   pattern = "⟪" iteminpattern space+ iteminpattern space+ iteminpattern space+ iteminpattern "⟫" 
   literal = | "⟪" | " " | " " | " " | "⟫" | bracket
