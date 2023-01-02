@@ -1,2 +1,6 @@
 sgr_end   = "\33[m";
 ⟪u v w x⟫
+          /* There is no "case ')'" here, as "grep -E ')'" acts like
+             "grep -E '\)'".  */
+          if (matcher != G_MATCHER_INDEX)
+            goto fail;

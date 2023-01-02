@@ -30,7 +30,7 @@ NestingGrammar {
       dqstring [q1 cs* q2] = \‛\«q1\»\«cs\»\«q2\»\’
       bqstring [q1 cs* q2] = \‛\«q1\»\«cs\»\«q2\»\’
       sqstring [q1 cs* q2] = \‛\«q1\»\«cs\»\«q2\»\’
-      slashstarcomment [ss1 cs* ss22] = \‛\«ss11\»\«cs\»\«ss2\»\’
+      slashstarcomment [ss1 cs* ss2] = \‛\«ss1\»\«cs\»\«ss2\»\’
 
   literal [c] = \‛\«c\»\’
   pattern [«firstPattern»] = «secondPattern»
