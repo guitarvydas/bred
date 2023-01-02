@@ -27,6 +27,9 @@ NestingGrammar {
   nameFirst [c] = \‛\«c\»\’
   nameRest [c] = \‛\«c\»\’
 
+      qdq [bslash q] = \‛\«bslash\»\«q\»\’
+      qbq [bslash q] = \‛\«bslash\»\«q\»\’
+      qsq [bslash q] = \‛\«bslash\»\«q\»\’
       dqstring [q1 cs* q2] = \‛\«q1\»\«cs\»\«q2\»\’
       bqstring [q1 cs* q2] = \‛\«q1\»\«cs\»\«q2\»\’
       sqstring [q1 cs* q2] = \‛\«q1\»\«cs\»\«q2\»\’
