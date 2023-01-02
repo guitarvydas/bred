@@ -45,7 +45,7 @@ dev4:
 	./bred-transpile.bash message.bred . <src4.txt
 
 dev5:
-	./bred message.bred . --keep <src4.txt
+	./bred message.bred . --keep <src5.txt
 
 
 devmanual: manual

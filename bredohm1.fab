@@ -23,7 +23,7 @@ NestingGrammar {
   leaf = space* uninterestingChar+ space* uninterestingChar*
   container = bracketed
 
-  uninterestingChar = ~pattern ~bracket ~space any
+  uninterestingChar = ~pattern ~bracket ~sq ~dq ~bq ~space any
   
   bracket =
     | "(" | ")" | "{" | "}" | "[" | "]" | lt | gt
