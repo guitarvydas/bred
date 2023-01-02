@@ -1,0 +1,45 @@
+
+/* Change the pattern *KEYS_P, of size *LEN_P, from fgrep to grep style.  */
+
+void
+fgrep_to_grep_pattern (char **keys_p, idx_t *len_p)
+{
+  idx_t len = *len_p;
+  char *keys = *keys_p;
+  mbstate_t mb_state = { 0 };
+  char *new_keys = xnmalloc (len + 1, 2);
+  char *p = new_keys;
+
+  for (ptrdiff_t n; len; keys += n, len -= n)
+    {
+      n = mb_clen (keys, len, &mb_state);
+      switch (n)
+        {
+        case -2:
+          n = len;
+          FALLTHROUGH;
+        default:
+          p = mempcpy (p, keys, n);
+          break;
+
+        case -1:
+          memset (&mb_state, 0, sizeof mb_state);
+          n = 1;
+          FALLTHROUGH;
+        case 1:
+          switch (*keys)
+            {
+            case '$': case '*': case '.': case '[': case '\\': case '^':
+              *p++ = '\\'; break;
+            }
+          *p++ = *keys;
+          break;
+        }
+    }
+
+  *p = '\n';
+  free (*keys_p);
+  *keys_p = new_keys;
+  *len_p = p - new_keys;
+}
+

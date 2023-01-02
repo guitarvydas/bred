@@ -61,11 +61,11 @@ NestingGrammar {
   anglesuffix = "=" | "<" | ">"
       dq = "\\\\""
       bslash = "\\\\\\\\"
-      qdq = bslash dq
+      qdq = (bslash bslash) | (bslash dq)
       bq = "\\`"
-      qbq = bslash bq
+      qbq = (bslash bslash) | (bslash bq)
       sq = "\\'"
-      qsq = bslash sq
+      qsq = (bslash bslash) | (bslash sq)
       nl = "\\\\n"
       dqstring = dq (qdq | (~dq any))* dq
       bqstring = bq (qbq | (~bq any))* bq

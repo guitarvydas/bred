@@ -1,0 +1,72 @@
+static int
+try_fgrep_pattern (int matcher, char *keys, idx_t *len_p)
+{
+  int result = matcher;
+  idx_t len = *len_p;
+  char *new_keys = ximalloc (len + 1);
+  char *p = new_keys;
+  char const *q = keys;
+  mbstate_t mb_state = { 0 };
+
+  while (len != 0)
+    {
+      switch (*q)
+        {
+        case '$': case '*': case '.': case '[': case '^':
+          goto fail;
+
+        case '(': case '+': case '?': case '{': case '|':
+          /* There is no "case ')'" here, as "grep -E ')'" acts like
+             "grep -E '\)'".  */
+          if (matcher != G_MATCHER_INDEX)
+            goto fail;
+          break;
+
+        case '\\':
+          if (1 < len)
+            switch (q[1])
+              {
+              case '\n':
+              case 'B': case 'S': case 'W': case'\'': case '<':
+              case 'b': case 's': case 'w': case '`': case '>':
+              case '1': case '2': case '3': case '4':
+              case '5': case '6': case '7': case '8': case '9':
+                goto fail;
+
+              case '(': case '+': case '?': case '{': case '|':
+                /* Pass '\)' to GEAcompile so it can complain.  Otherwise,
+                   "grep '\)'" would act like "grep ')'" while "grep '.*\)'
+                   would be an error.  */
+              case ')':
+                if (matcher == G_MATCHER_INDEX)
+                  goto fail;
+                FALLTHROUGH;
+              default:
+                q++, len--;
+                break;
+              }
+          break;
+        }
+
+      ptrdiff_t clen = (match_icase
+                        ? fgrep_icase_charlen (q, len, &mb_state)
+                        : mb_clen (q, len, &mb_state));
+      if (clen < 0)
+        goto fail;
+      p = mempcpy (p, q, clen);
+      q += clen;
+      len -= clen;
+    }
+
+  if (*len_p != p - new_keys)
+    {
+      *len_p = p - new_keys;
+      char *keys_end = mempcpy (keys, new_keys, p - new_keys);
+      *keys_end = '\n';
+    }
+  result = F_MATCHER_INDEX;
+
+ fail:
+  free (new_keys);
+  return result;
+}
