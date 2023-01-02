@@ -1,0 +1,42 @@
+#!/bin/bash
+## usage: ./bred.bash message.bred breddir <src
+spec=$1
+bdir=$2
+keep=$3
+
+#synonyms
+
+# when released...
+if [ "" = "$keep" ]
+then
+    pattern=pattern_${RANDOM}
+else
+    pattern=pattern
+fi
+
+# for now, during bootstrap
+fname=${pattern}
+
+# compile (generate) matcher/replacer
+support=--support=${bdir}/support.js
+
+#${bdir}/bred-generate.bash ${fname} ${spec} ${bdir}
+# generate .ohm file
+${bdir}/fab/fab - Bred ${bdir}/bred.ohm ${bdir}/bredohm1.fab           <${spec}  >${fname}.ohm
+${bdir}/fab/fab - Bred ${bdir}/bred.ohm ${bdir}/bredohm2.fab           <${spec} >>${fname}.ohm
+${bdir}/fab/fab - Bred ${bdir}/bred.ohm ${bdir}/bredohm3.fab           <${spec} >>${fname}.ohm
+# generate .fab file
+${bdir}/fab/fab - Bred ${bdir}/bred.ohm ${bdir}/bredfab.fab ${support} <${spec} >${fname}.fab
+
+# apply matcher/replacer to source
+#${bdir}/bred-apply.bash ${fname} ${bdir}
+# run the nano-transpiler
+${bdir}/fab/fab - NestingGrammar ${fname}.ohm ${fname}.fab
+
+if [ "" = "$keep" ]
+then   
+    rm -f ${fname}.ohm ${fname}.fab
+else
+    echo kept: ${fname}.ohm ${fname}.fab
+fi
+
