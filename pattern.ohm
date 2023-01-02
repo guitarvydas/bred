@@ -3,6 +3,11 @@ NestingGrammar {
 
   topLevel = item+
   item =
+    | sscomment
+    | slashstarcomment
+    | sqstring
+    | dqstring
+    | bqstring
     | pattern   -- pattern
     | container -- container
     | leaf      -- leaf
@@ -12,15 +17,16 @@ NestingGrammar {
     | container -- container
     | uninterestingChar+      -- leaf
 
+  dontcare = item+
+  
   leaf = space* uninterestingChar+ space* uninterestingChar*
   container = bracketed
 
-  runOfSpaces = space+
-  runOfUninterestingChars = uninterestingChar+
   uninterestingChar = ~pattern ~bracket ~space any
   
   bracket =
     | "(" | ")" | "{" | "}" | "[" | "]" | lt | gt
+    | "/*" | "*/"
     |  "❲" |  "❳" |  "«" | "»" | "⟨" |  "⟩" | "⟪" | "⟫"
     | "⎨" | "⎬" | "⎡"| "⎤" | "⎣" | "⎦"
     | "“" |  "”"
@@ -35,8 +41,9 @@ NestingGrammar {
     | brack<"⎨", "⎬"> -- br8
     | brack<"⎡", "⎤"> -- br9
     | brack<"⎣", "⎦"> -- br10
-    | brack<"«", "»"> -- br11
-    | verbatim -- br12
+    | brack<"/*", "*/"> -- br11
+    | brack<"«", "»"> -- br12
+    | verbatim -- br13
 
   verbatim = "“" (~"”" any)* "”"
 
@@ -51,7 +58,25 @@ NestingGrammar {
   gt = ~angleprefix ">" ~anglesuffix
   angleprefix = "=" | "<" | ">"
   anglesuffix = "=" | "<" | ">"
+      dq = "\""
+      bslash = "\\"
+      qdq = bslash dq
+      bq = "`"
+      qbq = bslash bq
+      sq = "'"
+      qsq = bslash sq
+      nl = "\n"
+      dqstring = dq (qdq | (~dq any))* dq
+      bqstring = bq (qbq | (~bq any))* bq
+      sqstring = sq (qsq | (~sq any))* sq
 
-  pattern = "⟪" iteminpattern " " iteminpattern " " iteminpattern " " iteminpattern "⟫" 
+      slashslash = "//"
+      sscomment = slashslash (~nl any)* nl
+
+      slashstar = "/*"
+      starslash = "*/"
+      slashstarcomment = slashstar (~starslash any)* starslash
+
+  pattern = "⟪" iteminpattern space+ iteminpattern space+ iteminpattern space+ iteminpattern "⟫" 
   literal = | "⟪" | " " | " " | " " | "⟫" | bracket
 }

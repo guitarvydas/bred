@@ -1,0 +1,16 @@
+      comment =
+        | "//" (~nl any)* nl
+        | "/*" (~"*/" any)* "*/"
+      string =
+        | bqstring
+	| dqstring
+	| sqstring
+      bqstring = "`" (qbq | (~"`" any))* "`"
+      dqstring = "\"" (qdq | (~"\"" any))* "\""
+      sqstring = "'" (qsq | (~"'" any))* "'"
+      qdq = "\\\\\\\\" "\\\\""
+      qbq = "\\\\" "`"
+      qsq = "\\\\" "'"
+      nl = "\\\\n"
+
+      spaces += comment
