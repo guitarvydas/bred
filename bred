@@ -1,13 +1,18 @@
 #!/bin/bash
 ## usage: ./bred.bash message.bred breddir <src
 spec=$1
-brdir=$2
-
+bdir=$2
+keep=$3
 
 #synonyms
 
 # when released...
-pattern=pattern_${RANDOM}
+if [ "" = "$keep" ]
+then
+    pattern=pattern_${RANDOM}
+else
+    pattern=pattern
+fi
 
 # for now, during bootstrap
 fname=${pattern}
@@ -28,4 +33,10 @@ ${bdir}/fab/fab - Bred ${bdir}/bred.ohm ${bdir}/bredfab.fab ${support} <${spec} 
 # run the nano-transpiler
 ${bdir}/fab/fab - NestingGrammar ${fname}.ohm ${fname}.fab
 
-rm -f ${fname}.ohm ${fname}.fab
+if [ "" = "$keep" ]
+then   
+    rm -f ${fname}.ohm ${fname}.fab
+else
+    echo kept: ${fname}.ohm ${fname}.fab
+fi
+

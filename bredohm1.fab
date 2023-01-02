@@ -4,6 +4,10 @@ NestingGrammar {
 
   topLevel = item+
   item =
+    | sscomment
+    | sqstring
+    | dqstring
+    | bqstring
     | pattern   -- pattern
     | container -- container
     | leaf      -- leaf
@@ -54,6 +58,20 @@ NestingGrammar {
   gt = ~angleprefix ">" ~anglesuffix
   angleprefix = "=" | "<" | ">"
   anglesuffix = "=" | "<" | ">"
+      dq = "\\\\""
+      bslash = "\\\\\\\\"
+      qdq = bslash dq
+      bq = "\\`"
+      qbq = bslash bq
+      sq = "\\'"
+      qsq = bslash sq
+      nl = "\\\\n"
+      dqstring = dq (qdq | (~dq any))* dq
+      bqstring = bq (qbq | (~bq any))* bq
+      sqstring = sq (qsq | (~sq any))* sq
+
+      slashslash = "//"
+      sscomment = slashslash (~nl any)* nl
 ’
 
   firstPattern [lq firstitem+ rq] = ‛’
