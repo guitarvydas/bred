@@ -60,15 +60,13 @@ NestingGrammar {
   anglesuffix = "=" | "<" | ">"
       dq = "\""
       bslash = "\\"
-      qdq = (bslash bslash) | (bslash dq)
       bq = "`"
-      qbq = (bslash bslash) | (bslash bq)
       sq = "'"
-      qsq = (bslash bslash) | (bslash sq)
       nl = "\n"
-      dqstring = dq (qdq | (~dq any))* dq
-      bqstring = bq (qbq | (~bq any))* bq
-      sqstring = sq (qsq | (~sq any))* sq
+      escchar = bslash any
+      dqstring = dq (escchar | (~dq any))* dq
+      bqstring = bq (escchar | (~bq any))* bq
+      sqstring = sq (escchar | (~sq any))* sq
 
       slashslash = "//"
       sscomment = slashslash (~nl any)* nl
