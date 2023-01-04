@@ -4,19 +4,18 @@ NestingGrammar {
   topLevel [items+] = ‛«items»’
   
   item_pattern [p] = ‛«p»’
-  item_variable [v] = ‛«v»’
   item_container [c] = ‛«c»’
   item_leaf [L] = ‛«L»’
   item_whitespace [s] = ‛«s»’
 
+  iteminpattern_container [c] = ‛«c»’
+  iteminpattern_leaf [uc+] = ‛«uc»’
+
   leaf [sp1* c1+ sp2* c2*] = ‛«sp1»«c1»«sp2»«c2»’
   container [b] = ‛«b»’
 
-  runOfSpaces [s+] = ‛«s»’
-  runOfUninterestingChars [cs+] = ‛«cs»’
   uninterestingChar [c] = ‛«c»’
 
-  variable [name] = ‛«name»’
   bracket [c] = ‛«c»’
   // bracketed [x] ... handled implicitly by Ohm-JS
   brack [lb item+ rb] = ‛«lb»«item»«rb»’
@@ -26,6 +25,17 @@ NestingGrammar {
   classicName [nFirst nRest*] = ‛«nFirst»«nRest»’
   nameFirst [c] = ‛«c»’
   nameRest [c] = ‛«c»’
+
+      dq [c] = ‛«c»’
+      bslash [c] = ‛«c»’
+      bq [c] = ‛«c»’
+      sq [c] = ‛«c»’
+      nl [c] = ‛«c»’
+      escchar [bslash c] = ‛«bslash»«c»’
+      dqstring [q1 cs* q2] = ‛«q1»«cs»«q2»’
+      bqstring [q1 cs* q2] = ‛«q1»«cs»«q2»’
+      sqstring [q1 cs* q2] = ‛«q1»«cs»«q2»’
+      slashstarcomment [ss1 cs* ss2] = ‛«ss1»«cs»«ss2»’
 
   literal [c] = ‛«c»’
   pattern [_k1 a _k2 ] = ‛this is a test «a» test a is this’

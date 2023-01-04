@@ -4,7 +4,7 @@ bdir=./
 
 all: fab/fab transpile
 
-dev: devg
+dev: dev0a dev0b dev0c dev0 dev00 dev1 dev2a dev2b dev3a dev4a dev4 dev4a dev5 devg dev6 devgrep
 
 dev0a:
 	./bred-generate.bash pattern spec0.bred . <src0.txt
@@ -54,7 +54,10 @@ devjunk:
 	./bred message.bred . --keep <srcjunk.txt
 
 devgrep:
-	./bred message.bred . --keep <grep.c
+	./bred c.bred . --keep <grep.c
+
+dev6:
+	./bred c.bred . --keep <src6.txt
 
 
 devmanual: manual

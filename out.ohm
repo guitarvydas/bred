@@ -3,22 +3,30 @@ NestingGrammar {
 
   topLevel = item+
   item =
+    | sscomment
+    | slashstarcomment
+    | sqstring
+    | dqstring
+    | bqstring
     | pattern   -- pattern
-    | variable  -- variable
     | container -- container
     | leaf      -- leaf
     | space     -- whitespace
 
+  iteminpattern =
+    | container -- container
+    | uninterestingChar+      -- leaf
+
+  dontcare = item+
+  
   leaf = space* uninterestingChar+ space* uninterestingChar*
   container = bracketed
 
-  runOfSpaces = space+
-  runOfUninterestingChars = uninterestingChar+
-  uninterestingChar = ~pattern ~variable ~space any
+  uninterestingChar = ~pattern ~bracket ~sq ~dq ~bq ~space any
   
-  variable = name
   bracket =
-    | "(" | ")" | "{" | "}" | "[" | "]" | "<" | ">"
+    | "(" | ")" | "{" | "}" | "[" | "]" | lt | gt
+    | "/*" | "*/"
     |  "❲" |  "❳" |  "«" | "»" | "⟨" |  "⟩" | "⟪" | "⟫"
     | "⎨" | "⎬" | "⎡"| "⎤" | "⎣" | "⎦"
     | "“" |  "”"
@@ -26,25 +34,47 @@ NestingGrammar {
     | brack<"(", ")"> -- br1
     | brack<"{", "}"> -- br2
     | brack<"[", "]"> -- br3
-    | brack<"<", ">"> -- br4
+    | brack<lt, gt> -- br4
     | brack<"❲", "❳"> -- br5
     | brack<"⟨", "⟩"> -- br6
     | brack<"⟪", "⟫"> -- br7
     | brack<"⎨", "⎬"> -- br8
     | brack<"⎡", "⎤"> -- br9
     | brack<"⎣", "⎦"> -- br10
-    | brack<"«", "»"> -- br11
-    | verbatim -- br12
+    | brack<"/*", "*/"> -- br11
+    | brack<"«", "»"> -- br12
+    | verbatim -- br13
 
   verbatim = "“" (~"”" any)* "”"
 
-  brack<lb,rb> = lb item rb
+  brack<lb,rb> = lb item* rb
   name = bracketedName | classicName
   bracketedName = "❲" (~"❳" any)+ "❳"
   classicName = nameFirst nameRest*
   nameFirst = letter | "_"
   nameRest = alnum | nameFirst
 
-  pattern = "{" item "}" 
+  lt = ~angleprefix "<" ~anglesuffix
+  gt = ~angleprefix ">" ~anglesuffix
+  angleprefix = "=" | "<" | ">"
+  anglesuffix = "=" | "<" | ">"
+      dq = "\""
+      bslash = "\\"
+      bq = "`"
+      sq = "'"
+      nl = "\n"
+      escchar = bslash any
+      dqstring = dq (escchar | (~dq any))* dq
+      bqstring = bq (escchar | (~bq any))* bq
+      sqstring = sq (escchar | (~sq any))* sq
+
+      slashslash = "//"
+      sscomment = slashslash (~nl any)* nl
+
+      slashstar = "/*"
+      starslash = "*/"
+      slashstarcomment = slashstar (~starslash any)* starslash
+
+  pattern = "{" iteminpattern "}" 
   literal = | "{" | "}" | bracket
 }

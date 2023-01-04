@@ -38,6 +38,6 @@ NestingGrammar {
       slashstarcomment [ss1 cs* ss2] = ‛«ss1»«cs»«ss2»’
 
   literal [c] = ‛«c»’
-  pattern [_k1 p _s2 d _s3 s _s4 m _k5 ] = ‛⟨Message «p» «d» «s» «m»⟩’
+  pattern [name _s1 _k2 params _k3 _s4 _k5 block _k6 ] = ‛«name»’
 }
 
