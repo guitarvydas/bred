@@ -3,8 +3,8 @@ NestingGrammar {
 
   topLevel = item+
   item =
-    | whitespace+
-    | atom
+    | whitespace+ -- ws
+    | atom  -- atom
     | pattern   -- pattern
     | bracketed -- bracketed
     | other -- other

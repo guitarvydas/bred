@@ -4,21 +4,17 @@ NestingGrammar {
 
   topLevel [items+] = \‛\«items\»\’
   
+  item_ws [ws+] = \‛\«ws\»\’
+  item_atom [a] = \‛\«a\»\’
   item_pattern [p] = \‛\«p\»\’
-  item_container [c] = \‛\«c\»\’
-  item_leaf [L] = \‛\«L\»\’
-  item_whitespace [s] = \‛\«s\»\’
+  item_bracketed [b] = \‛\«b\»\’
+  item_other [x] = \‛\«x\»\’
 
-  iteminpattern_container [c] = \‛\«c\»\’
-  iteminpattern_leaf [uc+] = \‛\«uc\»\’
-
-  leaf [sp1* c1+ sp2* c2*] = ‛\«sp1»\«c1»\«sp2»\«c2»\’
-  container [b] = \‛\«b\»\’
-
-  uninterestingChar [c] = \‛\«c\»\’
+  atom [x] = \‛\«x\»\’
+  other [x] = \‛\«x\»\’
 
   bracket [c] = \‛\«c\»\’
-  // bracketed [x] ... handled implicitly by Ohm-JS
+  bracketed [x] = \‛\«x\»\’
   brack [lb item+ rb] = \‛\«lb\»\«item\»\«rb\»\’
   verbatim [lq cs* rq] = \‛\«lq\»\«cs\»\«rq\»\’
   name [n] = \‛\«n\»\’
@@ -27,6 +23,11 @@ NestingGrammar {
   nameFirst [c] = \‛\«c\»\’
   nameRest [c] = \‛\«c\»\’
 
+  lt [c] = \‛\«c\»\’
+  gt [c] = \‛\«c\»\’
+  angleprefix [c] = \‛\«c\»\’
+  anglesuffix [c] = \‛\«c\»\’
+  
       dq [c] = \‛\«c\»\’
       bslash [c] = \‛\«c\»\’
       bq [c] = \‛\«c\»\’
@@ -36,7 +37,14 @@ NestingGrammar {
       dqstring [q1 cs* q2] = \‛\«q1\»\«cs\»\«q2\»\’
       bqstring [q1 cs* q2] = \‛\«q1\»\«cs\»\«q2\»\’
       sqstring [q1 cs* q2] = \‛\«q1\»\«cs\»\«q2\»\’
-      slashstarcomment [ss1 cs* ss2] = \‛\«ss1\»\«cs\»\«ss2\»\’
+      slashslash [c] = \‛\«c\»\’
+      sscomment [ss1 cs* ss2] = \‛\«ss1\»\«cs\»\«ss2\»\’
+
+      slashstar [x] = \‛\«x\»\’
+      starslash [x] = \‛\«x\»\’
+      sscomment [ss1 cs* ss2] = \‛\«ss1\»\«cs\»\«ss2\»\’
+
+      whitespace [c] = \‛\«c\»\’
 
   literal [c] = \‛\«c\»\’
   pattern [«firstPattern»] = «secondPattern»

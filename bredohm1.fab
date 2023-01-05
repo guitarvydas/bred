@@ -4,27 +4,23 @@ NestingGrammar {
 
   topLevel = item+
   item =
+    | whitespace+ -- ws
+    | atom -- atom
+    | pattern   -- pattern
+    | bracketed -- bracketed
+    | other -- other
+
+  atom =
     | sscomment
     | slashstarcomment
     | sqstring
     | dqstring
     | bqstring
-    | pattern   -- pattern
-    | container -- container
-    | leaf      -- leaf
-    | space     -- whitespace
+    | verbatim
 
-  iteminpattern =
-    | container -- container
-    | uninterestingChar+      -- leaf
-
-  dontcare = item+
+  other = (name | (~whitespace ~atom ~pattern ~bracket any))
   
-  leaf = space* uninterestingChar+ space* uninterestingChar*
-  container = bracketed
-
-  uninterestingChar = ~pattern ~bracket ~sq ~dq ~bq ~space any
-  
+ 
   bracket =
     | "(" | ")" | "{" | "}" | "[" | "]" | lt | gt
     | "/*" | "*/"
@@ -75,6 +71,9 @@ NestingGrammar {
       slashstar = "/*"
       starslash = "*/"
       slashstarcomment = slashstar (~starslash any)* starslash
+
+      whitespace = " " | "\\\\t" | "\\\\n"
+
 ’
 
   firstPattern [lq firstitem+ rq] = ‛’
