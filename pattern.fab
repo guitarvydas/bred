@@ -46,6 +46,8 @@ NestingGrammar {
       whitespace [c] = ‛«c»’
 
   literal [c] = ‛«c»’
-  pattern [name _s1 _k2 params _k3 _s4 _k5 block _k6 ] = ‛«name»’
+  pattern [name _s1 _k2 params _k3 _s4 _k5 block _k6 ] = ‛
+# «name»
+’
 }
 

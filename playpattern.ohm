@@ -1,0 +1,83 @@
+
+NestingGrammar {
+
+  topLevel = item+
+  item =
+    | whitespace+ -- ws
+    | atom -- atom
+    | pattern   -- pattern
+    | bracketed -- bracketed
+    | other -- other
+
+  atom =
+    | sscomment
+    | slashstarcomment
+    | sqstring
+    | dqstring
+    | bqstring
+    | verbatim
+
+  other = (name | (~whitespace ~atom ~pattern ~bracket any))
+  
+ 
+  bracket =
+    | "(" | ")" | "{" | "}" | "[" | "]" | lt | gt
+    | "/*" | "*/"
+    |  "❲" |  "❳" |  "«" | "»" | "⟨" |  "⟩" | "⟪" | "⟫"
+    | "⎨" | "⎬" | "⎡"| "⎤" | "⎣" | "⎦"
+    | "“" |  "”"
+  bracketed =
+    | brack<"(", ")"> -- br1
+    | brack<"{", "}"> -- br2
+    | brack<"[", "]"> -- br3
+    | brack<lt, gt> -- br4
+    | brack<"❲", "❳"> -- br5
+    | brack<"⟨", "⟩"> -- br6
+    | brack<"⟪", "⟫"> -- br7
+    | brack<"⎨", "⎬"> -- br8
+    | brack<"⎡", "⎤"> -- br9
+    | brack<"⎣", "⎦"> -- br10
+    | brack<"/*", "*/"> -- br11
+    | brack<"«", "»"> -- br12
+    | verbatim -- br13
+
+  verbatim = "“" (~"”" any)* "”"
+
+  brack<lb,rb> = lb item* rb
+  name = bracketedName | classicName
+  bracketedName = "❲" (~"❳" any)+ "❳"
+  classicName = nameFirst nameRest*
+  nameFirst = letter | "_"
+  nameRest = alnum | nameFirst
+
+  lt = ~angleprefix "<" ~anglesuffix
+  gt = ~angleprefix ">" ~anglesuffix
+  angleprefix = "=" | "<" | ">"
+  anglesuffix = "=" | "<" | ">"
+      dq = "\""
+      bslash = "\\"
+      bq = "`"
+      sq = "'"
+      nl = "\n"
+      escchar = bslash any
+      dqstring = dq (escchar | (~dq any))* dq
+      bqstring = bq (escchar | (~bq any))* bq
+      sqstring = sq (escchar | (~sq any))* sq
+
+      slashslash = "//"
+      sscomment = slashslash (~nl any)* nl
+
+      slashstar = "/*"
+      starslash = "*/"
+      slashstarcomment = slashstar (~starslash any)* starslash
+
+      whitespace = " " | "\t" | "\n"
+      ws = whitespace
+
+
+pattern = stuff* nonblank ws "(" stuff* ")" ws "{" stuff* "}" stuff*
+nonblank = other
+stuff = item
+
+  literal = | " " | "(" | ")" | " " | "{" | "}" | bracket
+}

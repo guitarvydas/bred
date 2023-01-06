@@ -1,0 +1,19 @@
+‛«name» («params») {«block»}’
+‛
+# «name»
+’
+
+‛!«name»[ ]*!(?«params»!)[ ]*!{?«block»!}’
+
+‛match«name» « »? match«(» skip«params» match«)» « »? match«{» skip«block» match«}»’
+
+‛match«name» skip« » match«(» skip«params» match«)» skip« » match«{» skip«block» match«}»’
+
+
+⟪⟫
+
+  pattern = item whitespace+ "(" item ")" whitespace+ "{" item "}" 
+
+pattern = stuff* nonblank ws "(" stuff* ")" ws "{" stuff* "}" stuff*
+nonblank = other
+stuff = item
