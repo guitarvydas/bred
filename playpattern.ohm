@@ -75,7 +75,8 @@ NestingGrammar {
       ws = whitespace
 
 
-pattern = stuff* nonblank ws "(" stuff* ")" ws "{" stuff* "}" stuff*
+cpattern = stuff* nonblank ws "(" stuff* ")" ws "{" stuff* "}"
+pattern = stuff* "I" ws "want" ws "a" ws "hamburger"
 nonblank = other
 stuff = item
 
